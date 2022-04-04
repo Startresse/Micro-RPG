@@ -7,6 +7,7 @@
 
 //TODO remove ?
 #include "Orc.h"
+#include "Knight.h"
 
 class Game
 {

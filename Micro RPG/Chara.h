@@ -5,7 +5,7 @@
 class Chara
 {
 public:
-    void attack(Chara& c);
+    virtual void attack(Chara& c);
     void stun(Chara& c) { c.stunned = true; }
 
     void end_turn();
