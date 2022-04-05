@@ -56,6 +56,7 @@ void Knight::take_damage(int atk)
             break;
         }
         shield = 0;
+        shield_just_broke = true;
     }
 
     HP -= atk;
@@ -64,6 +65,7 @@ void Knight::take_damage(int atk)
 void Knight::end_turn()
 {
     double_damage = false;
+    shield_just_broke = false;
     Chara::end_turn();
 }
 
@@ -71,8 +73,11 @@ void Knight::display_state() const
 {
     std::cout << "[" << class_name() << "]";
     std::cout << " | HP: " << HP;
-    std::cout << " | shield: " << shield;
+    if (shield > 0)
+        std::cout << " | shield: " << shield;
     std::cout << " | CD: " << current_cooldown;
+    if (shield_just_broke)
+        std::cout << " | SHIELD BROKE AND ABSORBED ALL THE ATTACK!";
     if (stunned)
         std::cout << " | STUNNED!";
     if (double_damage)

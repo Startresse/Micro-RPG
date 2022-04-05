@@ -22,6 +22,7 @@ protected:
     int shield;
 
     bool double_damage = false;
+    bool shield_just_broke = false;
 
 private:
     // Gamedesign : does shield block a fullhit even when very low or does it behave just like extra HP?

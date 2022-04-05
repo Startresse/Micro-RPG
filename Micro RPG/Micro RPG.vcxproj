@@ -144,12 +144,15 @@
     <ClCompile Include="Knight.cpp" />
     <ClCompile Include="Micro RPG.cpp" />
     <ClCompile Include="Orc.cpp" />
+    <ClCompile Include="Team.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Chara.h" />
+    <ClInclude Include="Classes.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Knight.h" />
     <ClInclude Include="Orc.h" />
+    <ClInclude Include="Team.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />

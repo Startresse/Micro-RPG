@@ -14,7 +14,7 @@ int main()
 {
     std::cout << "---WELCOME TO MICRO RPG!---\n";
     int nb_games = 0;
-    while(true)
+    while (true)
     {
         std::cout << "\nPlease provide an input:\n\n";
 

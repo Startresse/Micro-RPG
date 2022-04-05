@@ -4,10 +4,7 @@
 #include <random>
 
 #include "Chara.h"
-
-//TODO remove ?
-#include "Orc.h"
-#include "Knight.h"
+#include "Team.h"
 
 class Game
 {
@@ -16,5 +13,18 @@ public:
 
     void run();
 
+    void display_state();
+    void end_turn();
+    void special_moves();
+    void normal_attacks();
+
+    void turn(int turn_nb);
+    void game_end();
+
+    bool has_ended();
+
+private:
+    Team team1;
+    Team team2;
 };
 
