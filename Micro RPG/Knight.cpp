@@ -8,8 +8,11 @@ Knight::Knight()
     cooldown = 3;
 }
 
-void Knight::special_move(Chara& c)
+void Knight::special_move()
 {
+    if (!check_target())
+        return;
+
     if (current_cooldown > 0)
         return;
 
@@ -26,12 +29,15 @@ void Knight::special_move(Chara& c)
     current_cooldown = cooldown;
 }
 
-void Knight::attack(Chara& c)
+void Knight::attack()
 {
+    if (!check_target())
+        return;
+
     int dmg = double_damage ? 2 * atk : atk;
     double_damage = false;
 
-    Chara::attack(c, dmg);
+    Chara::attack(dmg);
 }
 
 void Knight::take_damage(int atk)

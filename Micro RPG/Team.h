@@ -10,6 +10,7 @@ public:
     ~Team() { delete chara; }
 
     void add_player(classes c);
+    void choose_target(Team& t);
 
     friend std::ostream& operator<<(std::ostream& os, const Team& team);
 
@@ -19,8 +20,7 @@ public:
     void attack(Team& t);
     void end_turn();
 
-    // TODO remove
-    Chara& target() { return *chara; }
+    Chara* get_chara() { return chara; }
 
 private:
     Chara* chara;

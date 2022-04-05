@@ -7,15 +7,18 @@ Orc::Orc()
     cooldown = 5;
 }
 
-void Orc::special_move(Chara& c)
+void Orc::special_move()
 {
+    if (!check_target())
+        return;
+
     if (current_cooldown > 0)
         return;
 
     std::cout << "Orc uses STUN: ";
     if (roll(0.20f))
     {
-        stun(c);
+        stun(*target);
         std::cout << "SUCCESS!";
     }
     else

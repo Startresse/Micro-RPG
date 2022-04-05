@@ -25,15 +25,20 @@ void Team::display_state()
     chara->display_state();
 }
 
+void Team::choose_target(Team& team)
+{
+    chara->set_target(team.get_chara());
+}
+
 // TODO remove Team and and target to Chara
 void Team::special_move(Team& t)
 {
-    chara->special_move(t.target());
+    chara->special_move();
 }
 
 void Team::attack(Team& t)
 {
-    chara->attack(t.target());
+    chara->attack();
 }
 
 void Team::end_turn()

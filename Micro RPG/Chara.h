@@ -5,15 +5,15 @@
 class Chara
 {
 public:
-    virtual void attack(Chara& c);
-    void stun(Chara& c) { c.stunned = true; }
+    virtual void attack();
+    void stun(Chara& c) const { c.stunned = true; }
 
     virtual void end_turn();
 
     bool is_dead() const { return HP <= 0; }
     bool is_stunned() const { return stunned; }
 
-    virtual void special_move(Chara& c) = 0;
+    virtual void special_move() = 0;
     virtual void take_damage(int atk);
 
     virtual void display_state() const;
@@ -22,7 +22,11 @@ public:
 
     // chance between 0 and 1.
     // 0.2 means 20% chance of success, etc..
-    bool roll(float chance);
+    bool roll(float chance) const ;
+
+    void set_target(Chara* c) { target = c; }
+    // return true if target is OK
+    bool check_target();
 
 protected:
     int HP;
@@ -32,6 +36,8 @@ protected:
     int current_cooldown = 0;
     bool stunned = false;
 
-    void attack(Chara& c, int dmg);
+    void attack(int dmg);
+
+    Chara* target;
 };
 

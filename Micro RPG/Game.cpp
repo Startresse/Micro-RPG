@@ -8,6 +8,9 @@ void Game::run()
     team1.add_player(classes::Knight);
     team2.add_player(classes::Orc);
 
+    team1.choose_target(team2);
+    team2.choose_target(team1);
+
     std::cout << "TEAM 1: " << team1 << std::endl;
     std::cout << "TEAM 2: " << team2 << std::endl;
 
@@ -47,18 +50,20 @@ void Game::turn(int turn_nb)
 
 void Game::game_end()
 {
-    if (team1.is_dead())
-        std::cout << "TEAM 2: " << team2 << " wins" << std::endl;
-    else if (team2.is_dead())
-        std::cout << "TEAM 1: " << team1 << " wins" << std::endl;
-    else
+    if (team1.is_dead() && team2.is_dead())
         std::cout << "TIE" << std::endl;
+    else if (team1.is_dead())
+        std::cout << "TEAM 2: " << team2 << " wins" << std::endl;
+    else
+        std::cout << "TEAM 1: " << team1 << " wins" << std::endl;
     std::cout << "\n\n\n";
 }
 
 void Game::display_state()
 {
+    std::cout << "Team 1: ";
     team1.display_state();
+    std::cout << "Team 2: ";
     team2.display_state();
 }
 

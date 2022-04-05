@@ -1,8 +1,6 @@
 #include <iostream>
 
 #include "Game.h"
-#include "Orc.h"
-#include "Knight.h"
 
 enum InputHandler
 {

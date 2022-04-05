@@ -7,12 +7,12 @@ class Knight : public Chara
 public:
     Knight();
 
-    void special_move(Chara& c);
+    void special_move();
     void take_damage(int atk);
 
     void end_turn();
 
-    void attack(Chara& c);
+    void attack();
 
     void display_state() const;
 
