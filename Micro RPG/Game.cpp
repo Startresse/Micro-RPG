@@ -3,7 +3,7 @@
 #include <iostream>
 #include <algorithm>
 
-void Game::run()
+void Game::run(const GameSettings& gs)
 {
     team1.add_player(classes::Knight);
     team2.add_player(classes::Orc);
@@ -13,10 +13,17 @@ void Game::run()
 
     std::cout << "TEAM 1: " << team1 << std::endl;
     std::cout << "TEAM 2: " << team2 << std::endl;
+    std::cout << std::endl;
 
     int round = 0;
     while (!has_ended())
     {
+        if (!gs.auto_turn)
+        {
+            std::cout << "press any key to continue...";
+            (void) getchar();
+        }
+
         turn(++round);
     }
 

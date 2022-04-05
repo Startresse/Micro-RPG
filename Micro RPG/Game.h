@@ -5,13 +5,14 @@
 
 #include "Chara.h"
 #include "Team.h"
+#include "GameSettings.h"
 
 class Game
 {
 public:
     Game() { std::srand(static_cast<unsigned int>(std::time(nullptr))); }
 
-    void run();
+    void run(const GameSettings& gs);
 
     void display_state();
     void end_turn();
