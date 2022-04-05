@@ -8,15 +8,14 @@ public:
     virtual void attack(Chara& c);
     void stun(Chara& c) { c.stunned = true; }
 
-    void end_turn();
+    virtual void end_turn();
 
     bool is_dead() const { return HP <= 0; }
     bool is_stunned() const { return stunned; }
 
     virtual void special_move(Chara& c) = 0;
-    virtual void take_damage(int atk) = 0;
+    virtual void take_damage(int atk);
 
-    // TODO virtual
     virtual void display_state() const;
 
     virtual std::string class_name() const = 0;
@@ -33,5 +32,6 @@ protected:
     int current_cooldown = 0;
     bool stunned = false;
 
+    void attack(Chara& c, int dmg);
 };
 

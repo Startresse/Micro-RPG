@@ -12,19 +12,27 @@ void Game::run()
 
     while (!knight.is_dead() && !orc.is_dead())
     {
-        std::cout << "turn " << ++round << std::endl;
-
-        knight.special_move(orc);
-        orc.special_move(knight);
-
-        knight.attack(orc);
-        orc.attack(knight);
+        std::cout << "\nTURN " << ++round << "\n\n";
 
         knight.display_state();
         orc.display_state();
 
+        std::cout << "\nSPECIAL MOVES:\n";
+        knight.special_move(orc);
+        orc.special_move(knight);
+
+        knight.display_state();
+        orc.display_state();
+
+        std::cout << "\nNORMAL MOVES:\n";
+        knight.attack(orc);
+        orc.attack(knight);
+
         knight.end_turn();
         orc.end_turn();
+
+        knight.display_state();
+        orc.display_state();
 
         std::cout << std::endl;
     }
@@ -35,6 +43,8 @@ void Game::run()
         std::cout << "Orc wins" << std::endl;
     else
         std::cout << "Knight wins" << std::endl;
+    std::cout << "\n\n\n";
+
 }
 //void Game::run()
 //{

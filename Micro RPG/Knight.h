@@ -10,6 +10,8 @@ public:
     void special_move(Chara& c);
     void take_damage(int atk);
 
+    void end_turn();
+
     void attack(Chara& c);
 
     void display_state() const;
@@ -23,7 +25,7 @@ protected:
 
 private:
     // Gamedesign : does shield block a fullhit even when very low or does it behave just like extra HP?
-    static enum class shield_behaviour
+    enum class shield_behaviour
     {
         ONLY_EXTRA_HP,
         FULL_BLOCK,

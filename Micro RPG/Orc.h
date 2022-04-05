@@ -8,7 +8,6 @@ public:
     Orc();
 
     void special_move(Chara& c);
-    void take_damage(int atk);
 
     std::string class_name() const { return "Orc"; }
 };

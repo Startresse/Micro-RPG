@@ -14,11 +14,11 @@ void Knight::special_move(Chara& c)
     if (current_cooldown > 0)
         return;
 
-    std::cout << "Knight uses CHARGE : ";
+    std::cout << "Knight uses CHARGE: ";
     if (roll(0.60f))
     {
         double_damage = true;
-        std::cout << "SUCCESS";
+        std::cout << "SUCCESS!";
     }
     else
         std::cout << "FAILED!";
@@ -30,14 +30,9 @@ void Knight::special_move(Chara& c)
 void Knight::attack(Chara& c)
 {
     int dmg = double_damage ? 2 * atk : atk;
-    // if stunned cancel charge skill
     double_damage = false;
 
-    if (!is_stunned())
-    {
-        std::cout << class_name() << " attacks " << c.class_name() << " for " << dmg << " damage.\n";
-        c.take_damage(dmg);
-    }
+    Chara::attack(c, dmg);
 }
 
 void Knight::take_damage(int atk)
@@ -67,14 +62,22 @@ void Knight::take_damage(int atk)
     HP -= atk;
 }
 
+void Knight::end_turn()
+{
+    double_damage = false;
+    Chara::end_turn();
+}
+
 void Knight::display_state() const
 {
     std::cout << "[" << class_name() << "]";
-    std::cout << " | HP : " << HP;
-    std::cout << " | shield : " << shield;
-    std::cout << " | CD : " << current_cooldown;
+    std::cout << " | HP: " << HP;
+    std::cout << " | shield: " << shield;
+    std::cout << " | CD: " << current_cooldown;
     if (stunned)
         std::cout << " | STUNNED!";
+    if (double_damage)
+        std::cout << " | BUFFED!";
 
     std::cout << std::endl;
 }
