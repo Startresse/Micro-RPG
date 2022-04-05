@@ -8,7 +8,6 @@ Knight::Knight()
     cooldown = 3;
 }
 
-// TODO remove parameter ?
 void Knight::special_move(Chara& c)
 {
     if (current_cooldown > 0)
