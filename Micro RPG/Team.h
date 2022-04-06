@@ -1,7 +1,8 @@
 #pragma once
 
 #include "Chara.h"
-#include "Classes.h"
+
+enum class classes;
 
 class Team
 {

@@ -1,16 +1,13 @@
 #pragma once
 
-#include <vector>
-#include <random>
-
-#include "Chara.h"
 #include "Team.h"
-#include "GameSettings.h"
+
+struct GameSettings;
 
 class Game
 {
 public:
-    Game() { std::srand(static_cast<unsigned int>(std::time(nullptr))); }
+    Game();
 
     void run(const GameSettings& gs);
 

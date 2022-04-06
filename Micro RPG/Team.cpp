@@ -1,5 +1,9 @@
 #include "Team.h"
 
+#include "Classes.h"
+#include "Knight.h"
+#include "Orc.h"
+
 void Team::add_player(classes c)
 {
     switch (c)

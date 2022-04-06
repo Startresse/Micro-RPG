@@ -1,7 +1,15 @@
 #include "Game.h"
 
 #include <iostream>
-#include <algorithm>
+#include <random>
+
+#include "GameSettings.h"
+#include "Classes.h"
+
+Game::Game()
+{
+    std::srand(static_cast<unsigned int>(std::time(nullptr)));
+}
 
 void Game::run(const GameSettings& gs)
 {
@@ -21,7 +29,7 @@ void Game::run(const GameSettings& gs)
         if (!gs.auto_turn)
         {
             std::cout << "press any key to continue...";
-            (void) getchar();
+            (void)getchar();
         }
 
         turn(++round);
