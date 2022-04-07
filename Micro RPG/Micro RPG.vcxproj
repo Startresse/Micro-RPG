@@ -144,6 +144,7 @@
     <ClCompile Include="Knight.cpp" />
     <ClCompile Include="Micro RPG.cpp" />
     <ClCompile Include="Orc.cpp" />
+    <ClCompile Include="Settings.cpp" />
     <ClCompile Include="Team.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +154,7 @@
     <ClInclude Include="GameSettings.h" />
     <ClInclude Include="Knight.h" />
     <ClInclude Include="Orc.h" />
+    <ClInclude Include="Settings.h" />
     <ClInclude Include="Team.h" />
   </ItemGroup>
   <ItemGroup>
