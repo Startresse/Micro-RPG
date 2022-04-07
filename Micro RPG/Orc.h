@@ -5,10 +5,19 @@
 class Orc : public Chara
 {
 public:
-    Orc() : Chara(60, 8, 5) {}
+    Orc() :
+        Chara(default_HP, default_atk, default_cooldown, default_skill_success_rate)
+    {}
 
-    void special_move();
+    void skill();
 
     std::string class_name() const { return "Orc"; }
+    std::string special_move_name() const { return "STUN"; }
+
+private:
+    static const int default_HP = 60;
+    static const int default_atk = 8;
+    static const int default_cooldown = 5;
+    static const float default_skill_success_rate;
 };
 

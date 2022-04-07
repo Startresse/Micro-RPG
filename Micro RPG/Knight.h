@@ -5,9 +5,12 @@
 class Knight : public Chara
 {
 public:
-    Knight() : Chara(20, 5, 3), shield(50) {}
+    Knight() :
+        Chara(default_HP, default_atk, default_cooldown, default_skill_success_rate),
+        shield(default_shield)
+    {}
 
-    void special_move();
+    void skill();
     void take_damage(int atk);
 
     void end_turn();
@@ -17,6 +20,7 @@ public:
     void display_state() const;
 
     std::string class_name() const { return "Knight"; }
+    std::string special_move_name() const { return "CHARGE"; }
 
 protected:
     int shield;
@@ -32,5 +36,11 @@ private:
         FULL_BLOCK,
     };
     static const shield_behaviour sb = shield_behaviour::FULL_BLOCK;
+
+    static const int default_HP = 20;
+    static const int default_shield = 50;
+    static const int default_atk = 5;
+    static const int default_cooldown = 3;
+    static const float default_skill_success_rate;
 };
 

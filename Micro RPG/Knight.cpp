@@ -1,19 +1,10 @@
 #include "Knight.h"
 
-void Knight::special_move()
+const float Knight::default_skill_success_rate = 0.60f;
+
+void Knight::skill()
 {
-    std::cout << class_name() << " uses CHARGE : ";
-
-    if (roll(0.60f))
-    {
-        double_damage = true;
-        std::cout << "SUCCESS!";
-    }
-    else
-        std::cout << "FAILED!";
-    std::cout << std::endl;
-
-    current_cooldown = cooldown;
+    double_damage = true;
 }
 
 void Knight::attack()
@@ -22,7 +13,6 @@ void Knight::attack()
         return;
 
     int dmg = double_damage ? 2 * atk : atk;
-    double_damage = false;
 
     Chara::attack(dmg);
 }

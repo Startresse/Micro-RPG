@@ -1,20 +1,12 @@
 #include "Orc.h"
 
-void Orc::special_move()
+const float Orc::default_skill_success_rate = 0.20f;
+
+void Orc::skill()
 {
     if (!check_target())
         return;
 
-    std::cout << class_name() << " uses STUN : ";
-    if (roll(0.20f))
-    {
-        stun(*target);
-        std::cout << "SUCCESS!";
-    }
-    else
-        std::cout << "FAILED!";
-    std::cout << std::endl;
-
-    current_cooldown = cooldown;
+    stun(*target);
 }
 

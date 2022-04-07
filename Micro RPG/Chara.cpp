@@ -11,6 +11,25 @@ void Chara::display_state() const
     std::cout << std::endl;
 }
 
+void Chara::special_move()
+{
+    if (is_on_CD())
+    {
+        std::cout << class_name() << " special move is on CD.\n";
+        return;
+    }
+
+    current_cooldown = cooldown;
+
+    bool success = roll_skill();
+
+    if (success)
+        skill();
+
+    std::cout << class_name() << " uses " << special_move_name() << " : ";
+    std::cout << (success ? " SUCCESS!" : "FAIL!") << "\n";
+}
+
 void Chara::attack()
 {
     attack(atk);
@@ -40,6 +59,11 @@ void Chara::end_turn()
 bool Chara::roll(float chance) const
 {
     return (static_cast<double>(rand()) / RAND_MAX) < chance;
+}
+
+bool Chara::roll_skill() const
+{
+    return roll(skill_success_rate);
 }
 
 void Chara::take_damage(int atk)
