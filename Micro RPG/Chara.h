@@ -11,7 +11,7 @@ public:
     virtual void attack();
     void stun(Chara& c) const { c.stunned = true; }
 
-    virtual void end_turn();
+    void end_turn();
 
     bool is_dead() const { return HP <= 0; }
     bool is_stunned() const { return stunned; }
@@ -43,9 +43,16 @@ protected:
     int current_cooldown = 0;
     bool stunned = false;
 
-    void attack(int dmg);
+    virtual int attack_damage() { return atk; }
     virtual void skill() = 0;
+    virtual void turn_end() {}
 
     Chara* target;
+
+    // display
+    void display_class_name() const;
+    void display_HP() const;
+    void display_CD() const;
+    void display_stunned() const;
 };
 

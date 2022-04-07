@@ -9,10 +9,11 @@ public:
         Chara(default_HP, default_atk, default_cooldown, default_skill_success_rate)
     {}
 
-    void skill();
-
     std::string class_name() const { return "Orc"; }
     std::string special_move_name() const { return "STUN"; }
+
+protected:
+    void skill();
 
 private:
     static const int default_HP = 60;

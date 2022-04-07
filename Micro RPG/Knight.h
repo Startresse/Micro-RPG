@@ -10,12 +10,7 @@ public:
         shield(default_shield)
     {}
 
-    void skill();
     void take_damage(int atk);
-
-    void end_turn();
-
-    void attack();
 
     void display_state() const;
 
@@ -27,6 +22,15 @@ protected:
 
     bool double_damage = false;
     bool shield_just_broke = false;
+
+    int attack_damage();
+    void skill();
+    void turn_end();
+
+    // display
+    void display_shield() const;
+    void display_shield_broke() const;
+    void display_buffed() const;
 
 private:
     // Gamedesign : does shield block a fullhit even when very low or does it behave just like extra HP?

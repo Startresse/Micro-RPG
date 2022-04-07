@@ -1,16 +1,5 @@
 #include "Chara.h"
 
-void Chara::display_state() const
-{
-    std::cout << "[" << class_name() << "]";
-    std::cout << " | HP: " << HP;
-    std::cout << " | CD: " << current_cooldown;
-    if (stunned)
-        std::cout << " | STUNNED!";
-
-    std::cout << std::endl;
-}
-
 void Chara::special_move()
 {
     if (is_on_CD())
@@ -32,13 +21,11 @@ void Chara::special_move()
 
 void Chara::attack()
 {
-    attack(atk);
-}
-
-void Chara::attack(int dmg)
-{
     if (!check_target())
+    {
+        std::cout << class_name() << " has no target!\n";
         return;
+    }
 
     if (is_stunned())
     {
@@ -46,14 +33,18 @@ void Chara::attack(int dmg)
         return;
     }
 
-    std::cout << class_name() << " attacks " << target->class_name() << " for " << dmg << " damage.\n";
+    int dmg = attack_damage();
     target->take_damage(dmg);
+
+    std::cout << class_name() << " attacks " << target->class_name() << " for " << dmg << " damage.\n";
 }
 
 void Chara::end_turn()
 {
     stunned = false;
     current_cooldown = std::max(current_cooldown - 1, 0);
+
+    turn_end();
 }
 
 bool Chara::roll(float chance) const
@@ -79,4 +70,34 @@ bool Chara::check_target()
         return false;
     }
     return true;
+}
+
+/* DISPLAY */
+
+void Chara::display_class_name() const
+{
+    std::cout << "[" << class_name() << "]";
+}
+void Chara::display_HP() const
+{
+    std::cout << " | HP: " << HP;
+}
+void Chara::display_CD() const
+{
+    std::cout << " | CD: " << current_cooldown;
+}
+void Chara::display_stunned() const
+{
+    if (stunned)
+        std::cout << " | STUNNED!";
+}
+
+void Chara::display_state() const
+{
+    display_class_name();
+    display_HP();
+    display_CD();
+    display_stunned();
+
+    std::cout << std::endl;
 }
