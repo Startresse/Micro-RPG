@@ -1,12 +1,5 @@
 #include "Orc.h"
 
-Orc::Orc()
-{
-    HP = 60;
-    atk = 8;
-    cooldown = 5;
-}
-
 void Orc::special_move()
 {
     if (!check_target())

@@ -43,7 +43,7 @@ int main()
         {
 
             // skips input so it doesn't override first Game input
-            (void) getchar();
+            (void)getchar();
 
             nb_games++;
 
@@ -73,7 +73,7 @@ enum InputHandlerSettings
 
 void settings(GameSettings& gs)
 {
-    while(true)
+    while (true)
     {
         std::cout << "\nSettings menu\n";
         std::cout << TOGGLE_AUTO_TURN << " : toggle auto turn";
@@ -95,7 +95,7 @@ void settings(GameSettings& gs)
         case EXIT:
             std::cout << "Exit Settings...\n";
             return;
-        default:   
+        default:
             std::cout << "Invalid input\n";
             break;
         }

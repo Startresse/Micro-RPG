@@ -1,13 +1,5 @@
 #include "Knight.h"
 
-Knight::Knight()
-{
-    HP = 20;
-    shield = 50;
-    atk = 5;
-    cooldown = 3;
-}
-
 void Knight::special_move()
 {
     if (!check_target())

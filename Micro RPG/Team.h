@@ -1,14 +1,15 @@
 #pragma once
 
-#include "Chara.h"
+#include <iostream>
 
+class Chara;
 enum class classes;
 
 class Team
 {
 public:
     Team() : chara(nullptr) {}
-    ~Team() { delete chara; }
+    ~Team();
 
     void add_player(classes c);
     void choose_target(Team& t);

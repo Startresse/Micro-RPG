@@ -5,7 +5,7 @@
 class Orc : public Chara
 {
 public:
-    Orc();
+    Orc() : Chara(60, 8, 5) {}
 
     void special_move();
 

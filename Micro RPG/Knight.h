@@ -5,7 +5,7 @@
 class Knight : public Chara
 {
 public:
-    Knight();
+    Knight() : Chara(20, 5, 3), shield(50) {}
 
     void special_move();
     void take_damage(int atk);

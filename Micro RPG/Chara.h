@@ -5,6 +5,8 @@
 class Chara
 {
 public:
+    Chara(int HP_, int atk_, int cooldown_) : HP(HP_), atk(atk_), cooldown(cooldown_), target(nullptr) {}
+
     virtual void attack();
     void stun(Chara& c) const { c.stunned = true; }
 

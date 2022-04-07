@@ -4,6 +4,11 @@
 #include "Knight.h"
 #include "Orc.h"
 
+Team::~Team()
+{
+    delete chara;
+}
+
 void Team::add_player(classes c)
 {
     switch (c)
