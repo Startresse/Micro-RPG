@@ -5,10 +5,7 @@ void Orc::special_move()
     if (!check_target())
         return;
 
-    if (current_cooldown > 0)
-        return;
-
-    std::cout << "Orc uses STUN: ";
+    std::cout << class_name() << " uses STUN : ";
     if (roll(0.20f))
     {
         stun(*target);

@@ -2,13 +2,8 @@
 
 void Knight::special_move()
 {
-    if (!check_target())
-        return;
+    std::cout << class_name() << " uses CHARGE : ";
 
-    if (current_cooldown > 0)
-        return;
-
-    std::cout << "Knight uses CHARGE: ";
     if (roll(0.60f))
     {
         double_damage = true;

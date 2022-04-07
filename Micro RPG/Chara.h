@@ -29,6 +29,7 @@ public:
     void set_target(Chara* c) { target = c; }
     // return true if target is OK
     bool check_target();
+    bool is_on_CD() { return current_cooldown > 0; }
 
 protected:
     int HP;

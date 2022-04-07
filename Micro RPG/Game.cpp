@@ -84,14 +84,14 @@ void Game::display_state()
 
 void Game::special_moves()
 {
-    team1.special_move(team2);
-    team2.special_move(team1);
+    team1.special_move();
+    team2.special_move();
 }
 
 void Game::normal_attacks()
 {
-    team1.attack(team2);
-    team2.attack(team1);
+    team1.attack();
+    team2.attack();
 }
 
 void Game::end_turn()

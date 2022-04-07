@@ -18,8 +18,8 @@ public:
 
     bool is_dead();
     void display_state();
-    void special_move(Team& t);
-    void attack(Team& t);
+    void special_move();
+    void attack();
     void end_turn();
 
     Chara* get_chara() { return chara; }

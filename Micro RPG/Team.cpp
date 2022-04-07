@@ -40,12 +40,15 @@ void Team::choose_target(Team& team)
 }
 
 // TODO remove Team and and target to Chara
-void Team::special_move(Team& t)
+void Team::special_move()
 {
-    chara->special_move();
+    if (chara->is_on_CD())
+        std::cout << chara->class_name() << " special move is on CD.\n";
+    else
+        chara->special_move();
 }
 
-void Team::attack(Team& t)
+void Team::attack()
 {
     chara->attack();
 }
