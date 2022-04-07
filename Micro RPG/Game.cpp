@@ -1,17 +1,11 @@
 #include "Game.h"
 
 #include <iostream>
-#include <random>
 
 #include "GameSettings.h"
 #include "Classes.h"
 
 Game::Game()
-{
-    std::srand(static_cast<unsigned int>(std::time(nullptr)));
-}
-
-void Game::run(const GameSettings& gs)
 {
     team1.add_player(classes::Knight);
     team2.add_player(classes::Orc);
@@ -19,10 +13,14 @@ void Game::run(const GameSettings& gs)
     team1.choose_target(team2);
     team2.choose_target(team1);
 
+    std::cout << "\n\n\n\n---NEW GAME---\n\n\n\n";
     std::cout << "TEAM 1: " << team1 << std::endl;
     std::cout << "TEAM 2: " << team2 << std::endl;
     std::cout << std::endl;
+}
 
+void Game::run(const GameSettings& gs)
+{
     int round = 0;
     while (!has_ended())
     {
@@ -32,7 +30,8 @@ void Game::run(const GameSettings& gs)
             (void)getchar();
         }
 
-        turn(++round);
+        std::cout << "\nTURN: " << ++round << "\n";
+        turn();
     }
 
     game_end();
@@ -44,10 +43,8 @@ bool Game::has_ended()
     return team1.is_dead() || team2.is_dead();
 }
 
-void Game::turn(int turn_nb)
+void Game::turn()
 {
-    std::cout << "\nTURN: " << turn_nb << "\n";
-
     std::cout << "\nSPECIAL MOVES:\n";
     special_moves();
     display_state();

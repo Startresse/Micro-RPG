@@ -16,7 +16,7 @@ public:
     void special_moves();
     void normal_attacks();
 
-    void turn(int turn_nb);
+    void turn();
     void game_end();
 
     bool has_ended();

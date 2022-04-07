@@ -1,5 +1,7 @@
 #include "Chara.h"
 
+#include "Utility.h"
+
 void Chara::special_move()
 {
     if (is_on_CD())
@@ -47,14 +49,9 @@ void Chara::end_turn()
     turn_end();
 }
 
-bool Chara::roll(float chance) const
-{
-    return (static_cast<double>(rand()) / RAND_MAX) < chance;
-}
-
 bool Chara::roll_skill() const
 {
-    return roll(skill_success_rate);
+    return Utility::roll(skill_success_rate);
 }
 
 void Chara::take_damage(int atk)

@@ -26,7 +26,6 @@ public:
 
     // chance between 0 and 1.
     // 0.2 means 20% chance of success, etc..
-    bool roll(float chance) const ;
     bool roll_skill() const;
 
     void set_target(Chara* c) { target = c; }
