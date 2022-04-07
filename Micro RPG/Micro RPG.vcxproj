@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="App.cpp" />
     <ClCompile Include="Chara.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Knight.cpp" />
@@ -146,8 +147,10 @@
     <ClCompile Include="Orc.cpp" />
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="Team.cpp" />
+    <ClCompile Include="Utility.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="App.h" />
     <ClInclude Include="Chara.h" />
     <ClInclude Include="Classes.h" />
     <ClInclude Include="Game.h" />
@@ -156,6 +159,7 @@
     <ClInclude Include="Orc.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="Team.h" />
+    <ClInclude Include="Utility.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />

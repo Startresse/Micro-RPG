@@ -24,5 +24,7 @@ public:
 private:
     Team team1;
     Team team2;
+
+    int nb_round = 0;
 };
 

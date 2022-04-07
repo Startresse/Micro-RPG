@@ -21,7 +21,6 @@ Game::Game()
 
 void Game::run(const GameSettings& gs)
 {
-    int round = 0;
     while (!has_ended())
     {
         if (!gs.auto_turn)
@@ -30,7 +29,7 @@ void Game::run(const GameSettings& gs)
             (void)getchar();
         }
 
-        std::cout << "\nTURN: " << ++round << "\n";
+        std::cout << "\nTURN: " << ++nb_round << "\n";
         turn();
     }
 
