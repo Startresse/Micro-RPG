@@ -3,10 +3,10 @@
 #include <string>
 #include <vector>
 
-#include "Utility.h"
-#include "Stun.h"
-#include "DamageModifier.h"
-#include "Shield.h"
+#include "Misc/Utility.h"
+#include "Statuses/Stun.h"
+#include "Statuses/DamageModifier.h"
+#include "Statuses/Shield.h"
 
 Chara::~Chara()
 {

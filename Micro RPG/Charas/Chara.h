@@ -3,7 +3,7 @@
 #include <iostream>
 #include <set>
 
-#include "Status.h"
+#include "Statuses/Status.h"
 
 class Chara
 {

@@ -3,9 +3,9 @@
 #include <algorithm>
 #include <numeric>
 
-#include "Classes.h"
-#include "Knight.h"
-#include "Orc.h"
+#include "Charas/Classes.h"
+#include "Charas/Knight.h"
+#include "Charas/Orc.h"
 
 Team::~Team()
 {

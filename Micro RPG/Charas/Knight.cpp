@@ -1,7 +1,7 @@
 #include "Knight.h"
 
-#include "DamageModifier.h"
-#include "Shield.h"
+#include "Statuses/DamageModifier.h"
+#include "Statuses/Shield.h"
 
 const float Knight::default_skill_success_rate = 0.60f;
 

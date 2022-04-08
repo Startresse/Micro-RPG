@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "Utility.h"
+#include "Misc/Utility.h"
 #include "Settings.h"
 #include "GameSettings.h"
 #include "Game.h"

@@ -3,7 +3,7 @@
 #include <sstream>
 #include <iomanip>
 
-#include "Utility.h"
+#include "Misc/Utility.h"
 
 const float DamageModifier::default_damage_multiplier = 2.f;
 

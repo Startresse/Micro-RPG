@@ -18,87 +18,87 @@
     <ClCompile Include="Micro RPG.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
+    <ClCompile Include="Logic\Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Chara.cpp">
+    <ClCompile Include="Charas\Chara.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Knight.cpp">
+    <ClCompile Include="Charas\Knight.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Orc.cpp">
+    <ClCompile Include="Charas\Orc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Team.cpp">
+    <ClCompile Include="Logic\Team.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Settings.cpp">
+    <ClCompile Include="Logic\Settings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Utility.cpp">
+    <ClCompile Include="Misc\Utility.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="App.cpp">
+    <ClCompile Include="Logic\App.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Status.cpp">
+    <ClCompile Include="Statuses\Status.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DamageModifier.cpp">
+    <ClCompile Include="Statuses\DamageModifier.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Shield.cpp">
+    <ClCompile Include="Statuses\Shield.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game.h">
+    <ClInclude Include="Logic\Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Chara.h">
+    <ClInclude Include="Charas\Chara.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Knight.h">
+    <ClInclude Include="Charas\Knight.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Orc.h">
+    <ClInclude Include="Charas\Orc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Team.h">
+    <ClInclude Include="Logic\Team.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Classes.h">
+    <ClInclude Include="Charas\Classes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Settings.h">
+    <ClInclude Include="Logic\Settings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Utility.h">
+    <ClInclude Include="Misc\Utility.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="App.h">
+    <ClInclude Include="Logic\App.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameSettings.h">
+    <ClInclude Include="Logic\GameSettings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Countable.h">
+    <ClInclude Include="Charas\Countable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CountableChara.h">
+    <ClInclude Include="Charas\CountableChara.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Status.h">
+    <ClInclude Include="Statuses\Status.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Stun.h">
+    <ClInclude Include="Statuses\Stun.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DamageModifier.h">
+    <ClInclude Include="Statuses\DamageModifier.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Shield.h">
+    <ClInclude Include="Statuses\Shield.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,7 +1,7 @@
 #include <cstdlib>
 #include <ctime>
 
-#include "App.h"
+#include "Logic/App.h"
 
 int main()
 {

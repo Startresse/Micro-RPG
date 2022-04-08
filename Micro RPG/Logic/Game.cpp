@@ -3,7 +3,7 @@
 #include <iostream>
 
 #include "GameSettings.h"
-#include "Classes.h"
+#include "Charas/Classes.h"
 
 Game::Game()
 {

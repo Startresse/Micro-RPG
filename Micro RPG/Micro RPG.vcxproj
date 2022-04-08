@@ -116,6 +116,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Micro RPG\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -130,6 +131,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Micro RPG\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -139,36 +141,36 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="App.cpp" />
-    <ClCompile Include="Chara.cpp" />
-    <ClCompile Include="DamageModifier.cpp" />
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="Knight.cpp" />
+    <ClCompile Include="Logic\App.cpp" />
+    <ClCompile Include="Charas\Chara.cpp" />
+    <ClCompile Include="Statuses\DamageModifier.cpp" />
+    <ClCompile Include="Logic\Game.cpp" />
+    <ClCompile Include="Charas\Knight.cpp" />
     <ClCompile Include="Micro RPG.cpp" />
-    <ClCompile Include="Orc.cpp" />
-    <ClCompile Include="Settings.cpp" />
-    <ClCompile Include="Shield.cpp" />
-    <ClCompile Include="Status.cpp" />
-    <ClCompile Include="Team.cpp" />
-    <ClCompile Include="Utility.cpp" />
+    <ClCompile Include="Charas\Orc.cpp" />
+    <ClCompile Include="Logic\Settings.cpp" />
+    <ClCompile Include="Statuses\Shield.cpp" />
+    <ClCompile Include="Statuses\Status.cpp" />
+    <ClCompile Include="Logic\Team.cpp" />
+    <ClCompile Include="Misc\Utility.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="App.h" />
-    <ClInclude Include="Chara.h" />
-    <ClInclude Include="Classes.h" />
-    <ClInclude Include="Countable.h" />
-    <ClInclude Include="CountableChara.h" />
-    <ClInclude Include="DamageModifier.h" />
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="GameSettings.h" />
-    <ClInclude Include="Knight.h" />
-    <ClInclude Include="Orc.h" />
-    <ClInclude Include="Settings.h" />
-    <ClInclude Include="Shield.h" />
-    <ClInclude Include="Status.h" />
-    <ClInclude Include="Stun.h" />
-    <ClInclude Include="Team.h" />
-    <ClInclude Include="Utility.h" />
+    <ClInclude Include="Logic\App.h" />
+    <ClInclude Include="Charas\Chara.h" />
+    <ClInclude Include="Charas\Classes.h" />
+    <ClInclude Include="Charas\Countable.h" />
+    <ClInclude Include="Charas\CountableChara.h" />
+    <ClInclude Include="Statuses\DamageModifier.h" />
+    <ClInclude Include="Logic\Game.h" />
+    <ClInclude Include="Logic\GameSettings.h" />
+    <ClInclude Include="Charas\Knight.h" />
+    <ClInclude Include="Charas\Orc.h" />
+    <ClInclude Include="Logic\Settings.h" />
+    <ClInclude Include="Statuses\Shield.h" />
+    <ClInclude Include="Statuses\Status.h" />
+    <ClInclude Include="Statuses\Stun.h" />
+    <ClInclude Include="Logic\Team.h" />
+    <ClInclude Include="Misc\Utility.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
