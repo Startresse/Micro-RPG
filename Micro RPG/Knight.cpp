@@ -14,26 +14,7 @@ int Knight::attack_damage()
 
 void Knight::take_damage(int dmg)
 {
-    if (shield)
-    {
-        int tmp_shield_value = shield;
-        shield = std::max(shield - dmg, 0);
-
-        switch (sb)
-        {
-        case shield_behaviour::ONLY_EXTRA_HP:
-            dmg -= tmp_shield_value;
-            break;
-        case shield_behaviour::FULL_BLOCK:
-            dmg = 0;
-            break;
-        default:
-            break;
-        }
-
-        if (shield == 0)
-            shield_just_broke = true;
-    }
+    take_hit(dmg);
 
     HP -= dmg;
 }
@@ -41,22 +22,11 @@ void Knight::take_damage(int dmg)
 void Knight::end_turn_extra()
 {
     double_damage = false;
-    shield_just_broke = false;
+    ShieldedUnit::end_turn();
 }
 
 
 /* DISPLAY */
-
-void Knight::display_shield() const
-{
-    if (shield > 0)
-        std::cout << " | shield: " << shield;
-}
-void Knight::display_shield_broke() const
-{
-    if (shield_just_broke)
-        std::cout << " | SHIELD BROKE AND ABSORBED ALL THE ATTACK!";
-}
 void Knight::display_buffed() const
 {
     if (double_damage)
