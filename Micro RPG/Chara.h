@@ -1,7 +1,7 @@
 #pragma once
 
 #include <iostream>
-#include <vector>
+#include <set>
 
 #include "Status.h"
 
@@ -45,7 +45,7 @@ protected:
 
     int current_cooldown = 0;
     // TODO remove vector and use some better stuff to handle removal
-    std::vector<Status*> statuses = std::vector<Status*>(0);
+    std::set<Status*> statuses = std::set<Status*>();
 
     void stun_target() const;
     void stun();

@@ -1,6 +1,7 @@
 #include "Chara.h"
 
 #include <string>
+#include <vector>
 
 #include "Utility.h"
 #include "ShieldedUnit.h"
@@ -54,7 +55,7 @@ void Chara::stun_target() const
 
 void Chara::stun()
 {
-    statuses.push_back(new Stun());
+    statuses.insert(new Stun());
 }
 
 void Chara::attack()
@@ -80,11 +81,17 @@ void Chara::attack()
 // TODO check dead + check dead for display
 void Chara::end_turn()
 {
-    for (Status* s : statuses)
+    std::vector<std::set<Status*>::iterator> to_delete;
+    for (std::set<Status*>::iterator it = statuses.begin(); it != statuses.end(); ++it)
     {
+        Status* s = *it;
         s->end_turn();
-        // TODO if !s.is_active() remove from data structure
+
+        if (s->has_time_out())
+            to_delete.push_back(it);
     }
+    for (const auto it : to_delete)
+        statuses.erase(it);
 
     current_cooldown = std::max(current_cooldown - 1, 0);
 
