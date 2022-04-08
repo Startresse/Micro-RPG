@@ -38,7 +38,7 @@ void Knight::take_damage(int dmg)
     HP -= dmg;
 }
 
-void Knight::turn_end()
+void Knight::end_turn_extra()
 {
     double_damage = false;
     shield_just_broke = false;
@@ -63,7 +63,7 @@ void Knight::display_buffed() const
         std::cout << " | BUFFED!";
 }
 
-void Knight::display_state_s() const
+void Knight::display_state_extra() const
 {
     display_class_name();
     display_HP();

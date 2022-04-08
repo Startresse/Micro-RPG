@@ -23,6 +23,19 @@ void Chara::special_move()
     std::cout << (success ? " SUCCESS!" : "FAIL!") << "\n";
 }
 
+void Chara::stun_target() const
+{
+    if (!has_good_target())
+        return;
+
+    target->stun();
+}
+
+void Chara::stun()
+{
+    stunned = true;
+}
+
 void Chara::attack()
 {
     if (!has_good_target())
@@ -49,7 +62,7 @@ void Chara::end_turn()
     stunned = false;
     current_cooldown = std::max(current_cooldown - 1, 0);
 
-    turn_end();
+    end_turn_extra();
 }
 
 bool Chara::roll_skill() const
@@ -64,11 +77,14 @@ void Chara::take_damage(int atk)
 
 void Chara::set_target(Chara* c)
 {
+    if (!c)
+        return;
+
     target = c;
     std::cout << name() << " targets " << c->name() << ".\n";
 }
 
-bool Chara::has_good_target()
+bool Chara::has_good_target() const
 {
     if (target == nullptr or target->is_dead())
         return false;
@@ -104,12 +120,12 @@ void Chara::display_state() const
         std::cout << " is dead.";
     }
     else
-        display_state_s();
+        display_state_extra();
 
     std::cout << std::endl;
 }
 
-void Chara::display_state_s() const
+void Chara::display_state_extra() const
 {
     display_class_name();
     display_HP();

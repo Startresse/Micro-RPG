@@ -24,9 +24,9 @@ protected:
 
     int attack_damage();
     void skill();
-    void turn_end();
+    void end_turn_extra();
 
-    void display_state_s() const;
+    void display_state_extra() const;
 
     // display
     void display_shield() const;

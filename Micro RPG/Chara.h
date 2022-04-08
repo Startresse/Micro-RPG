@@ -8,8 +8,7 @@ public:
     Chara(int HP_, int atk_, int cooldown_, float skill_success_rate_)
         : HP(HP_), atk(atk_), cooldown(cooldown_), skill_success_rate(skill_success_rate_), target(nullptr) {}
 
-    virtual void attack();
-    void stun(Chara& c) const { c.stunned = true; }
+    void attack();
 
     void end_turn();
 
@@ -22,15 +21,10 @@ public:
     void display_state() const;
 
     virtual std::string name() const = 0;
-    virtual std::string special_move_name() const = 0;
-
-    // chance between 0 and 1.
-    // 0.2 means 20% chance of success, etc..
-    bool roll_skill() const;
 
     void set_target(Chara* c);
     // return true if target is OK
-    bool has_good_target();
+    bool has_good_target() const;
     bool is_on_CD() { return current_cooldown > 0; }
 
 protected:
@@ -42,20 +36,29 @@ protected:
     int current_cooldown = 0;
     bool stunned = false;
 
+    void stun_target() const;
+    void stun();
+
     virtual int attack_damage() { return atk; }
     virtual void skill() = 0;
-    virtual void turn_end() {}
+    virtual void end_turn_extra() {}
 
     Chara* target;
 
     virtual std::string class_name() const = 0;
+    virtual std::string special_move_name() const = 0;
 
     // display
-    void display_state_s() const;
+    virtual void display_state_extra() const;
 
     void display_class_name() const;
     void display_HP() const;
     void display_CD() const;
     void display_stunned() const;
+
+private:
+    // chance between 0 and 1.
+    // 0.2 means 20% chance of success, etc..
+    bool roll_skill() const;
 };
 
