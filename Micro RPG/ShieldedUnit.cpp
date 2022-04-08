@@ -23,10 +23,6 @@ void ShieldedUnit::display_shield() const
 {
     if (shield_value > 0)
         std::cout << " | shield: " << shield_value;
-}
-
-void ShieldedUnit::display_shield_broke() const
-{
     if (shield_just_broke)
         std::cout << " | SHIELD BROKE AND ABSORBED ALL THE ATTACK!";
 }

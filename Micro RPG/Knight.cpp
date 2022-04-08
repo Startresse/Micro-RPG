@@ -30,16 +30,5 @@ void Knight::end_turn_extra()
 void Knight::display_buffed() const
 {
     if (double_damage)
-        std::cout << " | BUFFED!";
-}
-
-void Knight::display_state_extra() const
-{
-    display_class_name();
-    display_HP();
-    display_shield();
-    display_CD();
-    display_shield_broke();
-    display_stunned();
-    display_buffed();
+        std::cout << " | DOUBLE DAMAGE!";
 }

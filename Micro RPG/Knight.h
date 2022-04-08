@@ -17,17 +17,15 @@ public:
     std::string class_name() const { return "Knight"; }
     std::string special_move_name() const { return "CHARGE"; }
 
+    // display
+    void display_buffed() const;
+
 protected:
     bool double_damage = false;
 
     int attack_damage();
     void skill();
     void end_turn_extra();
-
-    void display_state_extra() const;
-
-    // display
-    void display_buffed() const;
 
 private:
     static const int default_HP = 20;

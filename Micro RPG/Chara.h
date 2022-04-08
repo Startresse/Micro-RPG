@@ -48,9 +48,6 @@ protected:
     virtual std::string class_name() const = 0;
     virtual std::string special_move_name() const = 0;
 
-    // display
-    virtual void display_state_extra() const;
-
     void display_class_name() const;
     void display_HP() const;
     void display_CD() const;

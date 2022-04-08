@@ -13,7 +13,5 @@ private:
         TOGGLE_AUTO_TURN = 1,
         EXIT,
     };
-
-    
 };
 

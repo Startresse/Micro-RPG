@@ -3,6 +3,8 @@
 #include <string>
 
 #include "Utility.h"
+#include "ShieldedUnit.h"
+#include "Knight.h"
 
 void Chara::special_move()
 {
@@ -81,7 +83,7 @@ void Chara::set_target(Chara* c)
         return;
 
     target = c;
-    std::cout << name() << " targets " << c->name() << ".\n";
+    std::cout << name() << " now targets " << c->name() << ".\n";
 }
 
 bool Chara::has_good_target() const
@@ -117,18 +119,19 @@ void Chara::display_state() const
     if (is_dead())
     {
         display_class_name();
-        std::cout << " is dead.";
+        std::cout << " is dead.\n";
+        return;
     }
-    else
-        display_state_extra();
 
-    std::cout << std::endl;
-}
+    const ShieldedUnit* shielded = dynamic_cast<const ShieldedUnit*>(this);
+    const Knight* knight = dynamic_cast<const Knight*>(this);
 
-void Chara::display_state_extra() const
-{
     display_class_name();
     display_HP();
+    if (shielded) shielded->display_shield();
     display_CD();
     display_stunned();
+    if (knight) knight->display_buffed();
+
+    std::cout << std::endl;
 }
