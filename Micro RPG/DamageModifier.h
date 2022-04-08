@@ -2,10 +2,10 @@
 
 #include "Status.h"
 
-class DamageBuff : public Status
+class DamageModifier : public Status
 {
 public:
-    DamageBuff
+    DamageModifier
     (
         float damage_multiplier_ = default_damage_multiplier,
         int extra_flat_damage_ = default_extra_flat_damage,
@@ -15,6 +15,8 @@ public:
         extra_flat_damage(extra_flat_damage_),
         Status(duration_, true) 
     {}
+
+    std::string status_name() const;
 
 protected:
     float damage_multiplier;

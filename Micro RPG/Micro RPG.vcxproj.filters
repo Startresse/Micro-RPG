@@ -48,7 +48,7 @@
     <ClCompile Include="Status.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DamageBuff.cpp">
+    <ClCompile Include="DamageModifier.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -98,7 +98,7 @@
     <ClInclude Include="Stun.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DamageBuff.h">
+    <ClInclude Include="DamageModifier.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

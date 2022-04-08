@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 class Status
 {
 public:
@@ -11,11 +13,12 @@ public:
     bool is_buff() const { return is_a_buff; }
     bool is_debuff() const { return !is_buff(); }
 
-    virtual void display() const = 0;
+    virtual std::string status_name() const = 0;
 
 private:
     int remaining_duration;
 
+    // TODO handle both buff and debuff
     bool is_a_buff;
 };
 
