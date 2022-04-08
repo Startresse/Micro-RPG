@@ -153,6 +153,7 @@
     <ClInclude Include="App.h" />
     <ClInclude Include="Chara.h" />
     <ClInclude Include="Classes.h" />
+    <ClInclude Include="Countable.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameSettings.h" />
     <ClInclude Include="Knight.h" />

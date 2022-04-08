@@ -148,7 +148,7 @@ std::ostream& operator<<(std::ostream& os, const Team& team)
     int n = static_cast<int>(team.characters.size());
 
     for (int i = 0; i < n; ++i)
-        os << team.characters[i]->class_name() << (i != n - 1 ? " | " : "");
+        os << team.characters[i]->name() << (i != n - 1 ? " | " : "");
 
     return os;
 }

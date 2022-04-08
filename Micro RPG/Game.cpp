@@ -68,9 +68,9 @@ void Game::game_end()
     if (team1.lost() && team2.lost())
         std::cout << "TIE" << std::endl;
     else if (team1.lost())
-        std::cout << "TEAM 2: " << team2 << " wins" << std::endl;
+        std::cout << "TEAM 2 " << team2 << " wins" << std::endl;
     else
-        std::cout << "TEAM 1: " << team1 << " wins" << std::endl;
+        std::cout << "TEAM 1 " << team1 << " wins" << std::endl;
     std::cout << "\n\n\n";
 }
 

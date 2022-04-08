@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Chara.h"
+#include "Countable.h"
 
 class Knight : public Chara
 {
@@ -14,6 +15,7 @@ public:
 
     void display_state() const;
 
+    //split woth chara
     std::string class_name() const { return "Knight"; }
     std::string special_move_name() const { return "CHARGE"; }
 

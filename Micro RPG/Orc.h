@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Chara.h"
+#include "Countable.h"
 
 class Orc : public Chara
 {

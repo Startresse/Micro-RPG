@@ -1,12 +1,19 @@
 #include "Chara.h"
 
+#include <string>
+
 #include "Utility.h"
+
+std::string Chara::name() const
+{
+    return class_name() + " " + std::to_string(ID);
+}
 
 void Chara::special_move()
 {
     if (is_on_CD())
     {
-        std::cout << class_name() << " special move is on CD.\n";
+        std::cout << name() << " special move is on CD.\n";
         return;
     }
 
@@ -17,7 +24,7 @@ void Chara::special_move()
     if (success)
         skill();
 
-    std::cout << class_name() << " uses " << special_move_name() << " : ";
+    std::cout << name() << " uses " << special_move_name() << " : ";
     std::cout << (success ? " SUCCESS!" : "FAIL!") << "\n";
 }
 
@@ -25,20 +32,20 @@ void Chara::attack()
 {
     if (!has_good_target())
     {
-        std::cout << class_name() << " has no target!\n";
+        std::cout << name() << " has no target!\n";
         return;
     }
 
     if (is_stunned())
     {
-        std::cout << class_name() << " is stunned!\n";
+        std::cout << name() << " is stunned!\n";
         return;
     }
 
     int dmg = attack_damage();
     target->take_damage(dmg);
 
-    std::cout << class_name() << " attacks " << target->class_name() << " for " << dmg << " damage.\n";
+    std::cout << name() << " attacks " << target->name() << " for " << dmg << " damage.\n";
 }
 
 void Chara::end_turn()
@@ -62,7 +69,7 @@ void Chara::take_damage(int atk)
 void Chara::set_target(Chara* c)
 {
     target = c;
-    std::cout << class_name() << " targets " << c->class_name() << ".\n";
+    std::cout << name() << " targets " << c->name() << ".\n";
 }
 
 bool Chara::has_good_target()
@@ -77,7 +84,7 @@ bool Chara::has_good_target()
 
 void Chara::display_class_name() const
 {
-    std::cout << "[" << class_name() << "]";
+    std::cout << "[" << name() << "]";
 }
 void Chara::display_HP() const
 {
