@@ -2,9 +2,7 @@
 
 #include <iostream>
 
-#include "Countable.h"
-
-class Chara : public Countable<Chara>
+class Chara
 {
 public:
     Chara(int HP_, int atk_, int cooldown_, float skill_success_rate_)
@@ -23,7 +21,7 @@ public:
 
     virtual void display_state() const;
 
-    std::string name() const;
+    virtual std::string name() const = 0;
     virtual std::string special_move_name() const = 0;
 
     // chance between 0 and 1.

@@ -1,13 +1,12 @@
 #pragma once
 
-#include "Chara.h"
-#include "Countable.h"
+#include "CountableChara.h"
 
-class Orc : public Chara
+class Orc : public CountableChara<Orc>
 {
 public:
     Orc() :
-        Chara(default_HP, default_atk, default_cooldown, default_skill_success_rate)
+        CountableChara(default_HP, default_atk, default_cooldown, default_skill_success_rate)
     {}
 
     std::string class_name() const { return "Orc"; }

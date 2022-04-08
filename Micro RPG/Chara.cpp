@@ -4,11 +4,6 @@
 
 #include "Utility.h"
 
-std::string Chara::name() const
-{
-    return class_name() + " " + std::to_string(ID);
-}
-
 void Chara::special_move()
 {
     if (is_on_CD())
@@ -48,6 +43,7 @@ void Chara::attack()
     std::cout << name() << " attacks " << target->name() << " for " << dmg << " damage.\n";
 }
 
+// TODO check dead + check dead for display
 void Chara::end_turn()
 {
     stunned = false;

@@ -94,13 +94,15 @@ Chara* Team::get_target()
 
 void Team::target()
 {
-    Chara* target = get_target();
-
-    if (target == nullptr)
-        return;
-
     for (Chara* chara : characters)
+    {
+        Chara* target = get_target();
+
+        if (target == nullptr)
+            return;
+
         chara->set_target(target);
+    }
 }
 
 void Team::check_update_target(Chara* chara)
