@@ -29,17 +29,17 @@ int App::run()
         {
 
             // skips input so it doesn't override first Game input
-            //(void)getchar();
+            (void)getchar();
 
             nb_games++;
 
             Game game;
-            game.run(*gs);
+            game.run(gs);
 
             break;
         }
         case SETTINGS:
-            Settings::settings(*gs);
+            Settings::settings(gs);
             break;
         default:
             std::cout << "Invalid input\n";

@@ -20,9 +20,9 @@ protected:
 
     enum InputHandler
     {
-        QUIT = 0,
         START_GAME = 1,
         SETTINGS = 2,
+        QUIT,
     };
 };
 

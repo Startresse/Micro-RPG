@@ -24,7 +24,7 @@ void Team::add_player(classes c)
     }
 }
 
-bool Team::is_dead()
+bool Team::lost()
 {
     return chara->is_dead();
 }

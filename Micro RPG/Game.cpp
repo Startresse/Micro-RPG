@@ -19,13 +19,13 @@ Game::Game()
     std::cout << std::endl;
 }
 
-void Game::run(const GameSettings& gs)
+void Game::run(const GameSettings* gs)
 {
     while (!has_ended())
     {
-        if (!gs.auto_turn)
+        if (!gs->auto_turn)
         {
-            std::cout << "press any key to continue...";
+            std::cout << "press enter to continue...";
             (void)getchar();
         }
 
@@ -39,7 +39,7 @@ void Game::run(const GameSettings& gs)
 
 bool Game::has_ended()
 {
-    return team1.is_dead() || team2.is_dead();
+    return team1.lost() || team2.lost();
 }
 
 void Game::turn()
@@ -61,9 +61,9 @@ void Game::turn()
 
 void Game::game_end()
 {
-    if (team1.is_dead() && team2.is_dead())
+    if (team1.lost() && team2.lost())
         std::cout << "TIE" << std::endl;
-    else if (team1.is_dead())
+    else if (team1.lost())
         std::cout << "TEAM 2: " << team2 << " wins" << std::endl;
     else
         std::cout << "TEAM 1: " << team1 << " wins" << std::endl;

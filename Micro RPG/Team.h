@@ -16,7 +16,7 @@ public:
 
     friend std::ostream& operator<<(std::ostream& os, const Team& team);
 
-    bool is_dead();
+    bool lost();
     void display_state();
     void special_move();
     void attack();

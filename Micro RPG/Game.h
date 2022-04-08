@@ -9,7 +9,7 @@ class Game
 public:
     Game();
 
-    void run(const GameSettings& gs);
+    void run(const GameSettings* gs);
 
     void display_state();
     void end_turn();
