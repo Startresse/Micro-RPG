@@ -5,6 +5,13 @@
 #include "Utility.h"
 #include "ShieldedUnit.h"
 #include "Knight.h"
+#include "Stun.h"
+
+Chara::~Chara()
+{
+    for (Status* s : statuses)
+        delete s;
+}
 
 void Chara::special_move()
 {
@@ -25,6 +32,18 @@ void Chara::special_move()
     std::cout << (success ? " SUCCESS!" : "FAIL!") << "\n";
 }
 
+bool Chara::is_stunned() const
+{
+    for (const Status* s : statuses)
+    {
+        const Stun* stun = dynamic_cast<const Stun*>(s);
+        if (stun && stun->is_active())
+            return true;
+    }
+
+    return false;
+}
+
 void Chara::stun_target() const
 {
     if (!has_good_target())
@@ -35,7 +54,7 @@ void Chara::stun_target() const
 
 void Chara::stun()
 {
-    stunned = true;
+    statuses.push_back(new Stun());
 }
 
 void Chara::attack()
@@ -61,7 +80,12 @@ void Chara::attack()
 // TODO check dead + check dead for display
 void Chara::end_turn()
 {
-    stunned = false;
+    for (Status* s : statuses)
+    {
+        s->end_turn();
+        // TODO if !s.is_active() remove from data structure
+    }
+
     current_cooldown = std::max(current_cooldown - 1, 0);
 
     end_turn_extra();
@@ -110,7 +134,7 @@ void Chara::display_CD() const
 }
 void Chara::display_stunned() const
 {
-    if (stunned)
+    if (is_stunned())
         std::cout << " | STUNNED!";
 }
 

@@ -1,19 +1,29 @@
 #pragma once
 
 #include <iostream>
+#include <vector>
+
+#include "Status.h"
 
 class Chara
 {
 public:
-    Chara(int HP_, int atk_, int cooldown_, float skill_success_rate_)
-        : HP(HP_), atk(atk_), cooldown(cooldown_), skill_success_rate(skill_success_rate_), target(nullptr) {}
+    Chara(int HP_, int atk_, int cooldown_, float skill_success_rate_) :
+        HP(HP_),
+        atk(atk_),
+        cooldown(cooldown_),
+        skill_success_rate(skill_success_rate_),
+        target(nullptr)
+    {}
+
+    ~Chara();
 
     void attack();
 
     void end_turn();
 
     bool is_dead() const { return HP <= 0; }
-    bool is_stunned() const { return stunned; }
+    bool is_stunned() const;
 
     void special_move();
     virtual void take_damage(int atk);
@@ -34,7 +44,8 @@ protected:
     float skill_success_rate;
 
     int current_cooldown = 0;
-    bool stunned = false;
+    // TODO remove vector and use some better stuff to handle removal
+    std::vector<Status*> statuses = std::vector<Status*>(0);
 
     void stun_target() const;
     void stun();
