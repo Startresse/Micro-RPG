@@ -63,7 +63,7 @@ void Knight::display_buffed() const
         std::cout << " | BUFFED!";
 }
 
-void Knight::display_state() const
+void Knight::display_state_s() const
 {
     display_class_name();
     display_HP();
@@ -72,6 +72,4 @@ void Knight::display_state() const
     display_shield_broke();
     display_stunned();
     display_buffed();
-
-    std::cout << std::endl;
 }

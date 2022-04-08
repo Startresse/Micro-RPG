@@ -12,8 +12,6 @@ public:
 
     void take_damage(int atk);
 
-    void display_state() const;
-
     //split woth chara
     std::string class_name() const { return "Knight"; }
     std::string special_move_name() const { return "CHARGE"; }
@@ -27,6 +25,8 @@ protected:
     int attack_damage();
     void skill();
     void turn_end();
+
+    void display_state_s() const;
 
     // display
     void display_shield() const;

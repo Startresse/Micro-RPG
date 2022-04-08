@@ -19,7 +19,7 @@ public:
     void special_move();
     virtual void take_damage(int atk);
 
-    virtual void display_state() const;
+    void display_state() const;
 
     virtual std::string name() const = 0;
     virtual std::string special_move_name() const = 0;
@@ -51,6 +51,8 @@ protected:
     virtual std::string class_name() const = 0;
 
     // display
+    void display_state_s() const;
+
     void display_class_name() const;
     void display_HP() const;
     void display_CD() const;

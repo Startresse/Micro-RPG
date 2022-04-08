@@ -98,10 +98,21 @@ void Chara::display_stunned() const
 
 void Chara::display_state() const
 {
+    if (is_dead())
+    {
+        display_class_name();
+        std::cout << " is dead.";
+    }
+    else
+        display_state_s();
+
+    std::cout << std::endl;
+}
+
+void Chara::display_state_s() const
+{
     display_class_name();
     display_HP();
     display_CD();
     display_stunned();
-
-    std::cout << std::endl;
 }

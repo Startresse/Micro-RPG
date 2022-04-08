@@ -140,6 +140,8 @@ void Team::end_turn()
 {
     for (Chara* chara : characters)
     {
+        if (chara->is_dead())
+            continue;
 
         chara->end_turn();
     }
