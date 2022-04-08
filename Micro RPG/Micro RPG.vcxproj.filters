@@ -42,13 +42,13 @@
     <ClCompile Include="App.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ShieldedUnit.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Status.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DamageModifier.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Shield.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -89,9 +89,6 @@
     <ClInclude Include="CountableChara.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ShieldedUnit.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Status.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -99,6 +96,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DamageModifier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Shield.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

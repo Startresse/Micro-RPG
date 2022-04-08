@@ -147,7 +147,7 @@
     <ClCompile Include="Micro RPG.cpp" />
     <ClCompile Include="Orc.cpp" />
     <ClCompile Include="Settings.cpp" />
-    <ClCompile Include="ShieldedUnit.cpp" />
+    <ClCompile Include="Shield.cpp" />
     <ClCompile Include="Status.cpp" />
     <ClCompile Include="Team.cpp" />
     <ClCompile Include="Utility.cpp" />
@@ -164,7 +164,7 @@
     <ClInclude Include="Knight.h" />
     <ClInclude Include="Orc.h" />
     <ClInclude Include="Settings.h" />
-    <ClInclude Include="ShieldedUnit.h" />
+    <ClInclude Include="Shield.h" />
     <ClInclude Include="Status.h" />
     <ClInclude Include="Stun.h" />
     <ClInclude Include="Team.h" />

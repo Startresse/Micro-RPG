@@ -7,9 +7,9 @@
 
 const float DamageModifier::default_damage_multiplier = 2.f;
 
-int DamageModifier::apply(int dmg) const
+void DamageModifier::apply(int& dmg) const
 {
-    return static_cast<int>(std::round(dmg * damage_multiplier)) + extra_flat_damage;
+    dmg = static_cast<int>(std::round(dmg * damage_multiplier)) + extra_flat_damage;
 }
 
 std::string DamageModifier::status_name() const

@@ -10,7 +10,7 @@ public:
     virtual void end_turn();
 
     bool is_active() const;
-    bool has_time_out() const { return remaining_duration == 0; }
+    virtual bool has_expired() const { return remaining_duration == 0; }
     bool is_buff() const { return is_a_buff; }
     bool is_debuff() const { return !is_buff(); }
 

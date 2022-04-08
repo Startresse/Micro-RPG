@@ -17,7 +17,7 @@ public:
         Status(duration_, true) 
     {}
 
-    int apply(int dmg) const;
+    void apply(int& dmg) const;
 
     std::string status_name() const;
 

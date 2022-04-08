@@ -4,9 +4,9 @@
 #include <vector>
 
 #include "Utility.h"
-#include "ShieldedUnit.h"
 #include "Stun.h"
 #include "DamageModifier.h"
+#include "Shield.h"
 
 Chara::~Chara()
 {
@@ -70,7 +70,7 @@ int Chara::attack_damage() const
     {
         const DamageModifier* dm = dynamic_cast<const DamageModifier*>(s);
         if (dm && dm->is_active())
-            dmg = dm->apply(dmg);
+            dm->apply(dmg);
     }
 
     return dmg;
@@ -105,15 +105,13 @@ void Chara::end_turn()
         Status* s = *it;
         s->end_turn();
 
-        if (s->has_time_out())
+        if (s->has_expired())
             to_delete.push_back(it);
     }
     for (const auto it : to_delete)
         statuses.erase(it);
 
     current_cooldown = std::max(current_cooldown - 1, 0);
-
-    end_turn_extra();
 }
 
 bool Chara::roll_skill() const
@@ -123,6 +121,13 @@ bool Chara::roll_skill() const
 
 void Chara::take_damage(int atk)
 {
+    for (Status* s : statuses)
+    {
+        Shield* shield = dynamic_cast<Shield*>(s);
+        if (shield && shield->is_active())
+            shield->take_hit(atk);
+    }
+
     HP -= atk;
 }
 
@@ -172,11 +177,8 @@ void Chara::display_state() const
         return;
     }
 
-    const ShieldedUnit* shielded = dynamic_cast<const ShieldedUnit*>(this);
-
     display_class_name();
     display_HP();
-    if (shielded) shielded->display_shield();
     display_CD();
     display_statuses();
 

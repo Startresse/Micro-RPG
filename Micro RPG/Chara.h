@@ -52,7 +52,6 @@ protected:
 
     int attack_damage() const;
     virtual void skill() = 0;
-    virtual void end_turn_extra() {}
 
     Chara* target;
 
