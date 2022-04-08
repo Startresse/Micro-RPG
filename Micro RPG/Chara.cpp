@@ -5,8 +5,8 @@
 
 #include "Utility.h"
 #include "ShieldedUnit.h"
-#include "Knight.h"
 #include "Stun.h"
+#include "DamageModifier.h"
 
 Chara::~Chara()
 {
@@ -30,7 +30,7 @@ void Chara::special_move()
         skill();
 
     std::cout << name() << " uses " << special_move_name() << " : ";
-    std::cout << (success ? " SUCCESS!" : "FAIL!") << "\n";
+    std::cout << (success ? "SUCCESS!" : "FAIL!") << "\n";
 }
 
 bool Chara::is_stunned() const
@@ -45,6 +45,11 @@ bool Chara::is_stunned() const
     return false;
 }
 
+void Chara::add_status(Status* s)
+{
+    statuses.insert(s);
+}
+
 void Chara::stun_target() const
 {
     if (!has_good_target())
@@ -56,6 +61,19 @@ void Chara::stun_target() const
 void Chara::stun()
 {
     statuses.insert(new Stun());
+}
+
+int Chara::attack_damage() const
+{
+    int dmg = atk;
+    for (const Status* s : statuses)
+    {
+        const DamageModifier* dm = dynamic_cast<const DamageModifier*>(s);
+        if (dm && dm->is_active())
+            dmg = dm->apply(dmg);
+    }
+
+    return dmg;
 }
 
 void Chara::attack()
@@ -139,10 +157,10 @@ void Chara::display_CD() const
 {
     std::cout << " | CD: " << current_cooldown;
 }
-void Chara::display_stunned() const
+void Chara::display_statuses() const
 {
-    if (is_stunned())
-        std::cout << " | STUNNED!";
+    for (const Status* s : statuses)
+        std::cout << " | " << s->status_name();
 }
 
 void Chara::display_state() const
@@ -155,14 +173,12 @@ void Chara::display_state() const
     }
 
     const ShieldedUnit* shielded = dynamic_cast<const ShieldedUnit*>(this);
-    const Knight* knight = dynamic_cast<const Knight*>(this);
 
     display_class_name();
     display_HP();
     if (shielded) shielded->display_shield();
     display_CD();
-    display_stunned();
-    if (knight) knight->display_buffed();
+    display_statuses();
 
     std::cout << std::endl;
 }

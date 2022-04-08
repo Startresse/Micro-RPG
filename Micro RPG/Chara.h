@@ -45,12 +45,12 @@ protected:
 
     int current_cooldown = 0;
     // TODO remove vector and use some better stuff to handle removal
-    std::set<Status*> statuses = std::set<Status*>();
+    void add_status(Status* s);
 
     void stun_target() const;
     void stun();
 
-    virtual int attack_damage() { return atk; }
+    int attack_damage() const;
     virtual void skill() = 0;
     virtual void end_turn_extra() {}
 
@@ -62,9 +62,11 @@ protected:
     void display_class_name() const;
     void display_HP() const;
     void display_CD() const;
-    void display_stunned() const;
+    void display_statuses() const;
 
 private:
+    std::set<Status*> statuses = std::set<Status*>();
+
     // chance between 0 and 1.
     // 0.2 means 20% chance of success, etc..
     bool roll_skill() const;

@@ -2,6 +2,7 @@
 
 #include "Status.h"
 
+// split into damage multiplier and damage flat
 class DamageModifier : public Status
 {
 public:
@@ -15,6 +16,8 @@ public:
         extra_flat_damage(extra_flat_damage_),
         Status(duration_, true) 
     {}
+
+    int apply(int dmg) const;
 
     std::string status_name() const;
 
