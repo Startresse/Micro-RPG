@@ -7,16 +7,20 @@
 
 Game::Game()
 {
-    team1.add_player(classes::Knight);
-    team2.add_player(classes::Orc);
-
-    team1.choose_target(team2);
-    team2.choose_target(team1);
 
     std::cout << "\n\n\n\n---NEW GAME---\n\n\n\n";
+
+    team1.add_player(classes::Knight);
+    team1.add_player(classes::Knight);
+    team2.add_player(classes::Orc);
+    team2.add_player(classes::Orc);
+
     std::cout << "TEAM 1: " << team1 << std::endl;
     std::cout << "TEAM 2: " << team2 << std::endl;
     std::cout << std::endl;
+
+    team1.set_enemy_team(&team2);
+    team2.set_enemy_team(&team1);
 }
 
 void Game::run(const GameSettings* gs)
@@ -72,9 +76,9 @@ void Game::game_end()
 
 void Game::display_state()
 {
-    std::cout << "Team 1: ";
+    std::cout << "Team 1:\n";
     team1.display_state();
-    std::cout << "Team 2: ";
+    std::cout << "Team 2:\n";
     team2.display_state();
 }
 

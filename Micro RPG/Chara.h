@@ -28,9 +28,9 @@ public:
     // 0.2 means 20% chance of success, etc..
     bool roll_skill() const;
 
-    void set_target(Chara* c) { target = c; }
+    void set_target(Chara* c);
     // return true if target is OK
-    bool check_target();
+    bool has_good_target();
     bool is_on_CD() { return current_cooldown > 0; }
 
 protected:

@@ -23,7 +23,7 @@ void Chara::special_move()
 
 void Chara::attack()
 {
-    if (!check_target())
+    if (!has_good_target())
     {
         std::cout << class_name() << " has no target!\n";
         return;
@@ -59,13 +59,17 @@ void Chara::take_damage(int atk)
     HP -= atk;
 }
 
-bool Chara::check_target()
+void Chara::set_target(Chara* c)
+{
+    target = c;
+    std::cout << class_name() << " targets " << c->class_name() << ".\n";
+}
+
+bool Chara::has_good_target()
 {
     if (target == nullptr or target->is_dead())
-    {
-        std::cout << "ERROR: " << class_name() << " NEEDS RETARGETING" << std::endl;
         return false;
-    }
+
     return true;
 }
 

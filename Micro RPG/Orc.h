@@ -20,5 +20,6 @@ private:
     static const int default_atk = 8;
     static const int default_cooldown = 5;
     static const float default_skill_success_rate;
+
 };
 
