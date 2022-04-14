@@ -101,6 +101,9 @@
     <ClInclude Include="Statuses\Shield.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Misc\Countable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />

@@ -3,7 +3,7 @@
 #include <string>
 
 #include "Chara.h"
-#include "Countable.h"
+#include "Misc/Countable.h"
 
 template <typename t>
 class CountableChara : public Chara, public Countable<t>
