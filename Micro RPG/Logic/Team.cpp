@@ -1,11 +1,11 @@
 #include "Team.h"
 
-#include <algorithm>
 #include <numeric>
 
 #include "Charas/Classes.h"
 #include "Charas/Knight.h"
 #include "Charas/Orc.h"
+#include "Misc/Utility.h"
 
 Team::~Team()
 {
@@ -69,7 +69,7 @@ Chara* Team::get_random_alive_chara()
 {
     std::vector<int> char_id(size());
     std::iota(char_id.begin(), char_id.end(), 0);
-    std::random_shuffle(char_id.begin(), char_id.end());
+    std::shuffle(char_id.begin(), char_id.end(), Utility::generator());
 
     for (int i : char_id)
     {

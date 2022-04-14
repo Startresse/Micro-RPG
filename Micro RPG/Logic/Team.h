@@ -6,10 +6,10 @@
 class Chara;
 enum class classes;
 
-enum class TargetSystem 
+enum class TargetSystem
 {
     FOCUS,
-    RANDOM, 
+    RANDOM,
 };
 
 class Team
