@@ -1,5 +1,6 @@
 #include "Team.h"
 
+#include <iostream>
 #include <numeric>
 
 #include "Charas/Classes.h"
