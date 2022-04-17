@@ -160,7 +160,6 @@
     <ClInclude Include="Logic\App.h" />
     <ClInclude Include="Charas\Chara.h" />
     <ClInclude Include="Charas\Classes.h" />
-    <ClInclude Include="Charas\Countable.h" />
     <ClInclude Include="Charas\CountableChara.h" />
     <ClInclude Include="Misc\Countable.h" />
     <ClInclude Include="Statuses\DamageModifier.h" />
@@ -174,6 +173,9 @@
     <ClInclude Include="Statuses\Stun.h" />
     <ClInclude Include="Logic\Team.h" />
     <ClInclude Include="Misc\Utility.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\README.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

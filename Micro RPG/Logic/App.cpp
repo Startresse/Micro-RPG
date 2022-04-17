@@ -24,14 +24,14 @@ int App::run()
         case QUIT:
             return 0;
         case START_GAME:
-        {
             nb_games++;
 
-            Game game;
-            game.run(gs);
+            {
+                Game game;
+                game.run(gs);
+            }
 
             break;
-        }
         case SETTINGS:
             Settings::settings(gs);
             break;

@@ -16,7 +16,7 @@ public:
         target(nullptr)
     {}
 
-    ~Chara();
+    virtual ~Chara();
 
     void attack();
 

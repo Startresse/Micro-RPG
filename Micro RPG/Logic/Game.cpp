@@ -8,7 +8,6 @@
 
 Game::Game()
 {
-
     std::cout << "\n\n\n\n---NEW GAME---\n\n\n\n";
 
     team1.add_player(classes::Knight);
@@ -33,7 +32,7 @@ void Game::run(const GameSettings* gs)
         if (!gs->auto_turn)
         {
             std::cout << "press any to continue...";
-            _getch();
+            (void)_getch();
         }
 
         std::cout << "\nTURN: " << ++nb_round << "\n";

@@ -83,9 +83,6 @@
     <ClInclude Include="Logic\GameSettings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Charas\Countable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Charas\CountableChara.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -104,5 +101,8 @@
     <ClInclude Include="Misc\Countable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\README.md" />
   </ItemGroup>
 </Project>
