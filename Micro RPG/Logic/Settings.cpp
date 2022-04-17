@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "GameSettings.h"
+#include "Misc/Utility.h"
 
 void Settings::settings(GameSettings* gs)
 {
@@ -15,11 +16,7 @@ void Settings::settings(GameSettings* gs)
         std::cout << ".\n";
         std::cout << EXIT << " : Exit settings.\n";
 
-        std::cout << "\n> ";
-        char n;
-        std::cin >> n;
-
-        switch (n - static_cast<int>('0'))
+        switch (Utility::int_input())
         {
         case TOGGLE_AUTO_TURN:
             gs->auto_turn = !gs->auto_turn;

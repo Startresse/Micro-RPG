@@ -1,6 +1,7 @@
 #include "Utility.h"
 
 #include <iostream>
+#include <conio.h>
 
 std::random_device seed;
 std::mt19937 Utility::engine(seed());
@@ -22,11 +23,10 @@ bool Utility::roll(float succes_rate)
 }
 
 
-char Utility::input()
+char Utility::int_input()
 {
     std::cout << "\n> ";
-    char n;
-    std::cin >> n;
-
+    int n = _getch() - static_cast<int>('0');
+    std::cout << n << "\n";
     return n;
 }

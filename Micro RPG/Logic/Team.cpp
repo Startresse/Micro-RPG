@@ -97,6 +97,9 @@ void Team::target()
 {
     for (Chara* chara : characters)
     {
+        if (chara->has_good_target())
+            continue;
+
         Chara* target = get_target();
 
         if (target == nullptr)

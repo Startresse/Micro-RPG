@@ -1,6 +1,7 @@
 #include "Game.h"
 
 #include <iostream>
+#include <conio.h>
 
 #include "GameSettings.h"
 #include "Charas/Classes.h"
@@ -21,6 +22,8 @@ Game::Game()
 
     team1.set_enemy_team(&team2);
     team2.set_enemy_team(&team1);
+
+    std::cout << std::endl;
 }
 
 void Game::run(const GameSettings* gs)
@@ -29,8 +32,8 @@ void Game::run(const GameSettings* gs)
     {
         if (!gs->auto_turn)
         {
-            std::cout << "press enter to continue...";
-            (void)getchar();
+            std::cout << "press any to continue...";
+            _getch();
         }
 
         std::cout << "\nTURN: " << ++nb_round << "\n";

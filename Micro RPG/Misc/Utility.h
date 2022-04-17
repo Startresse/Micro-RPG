@@ -14,7 +14,7 @@ public:
     static auto& generator() { return engine; }
 
     // for getting player input consistency
-    static char input();
+    static char int_input();
 
     // for float equality consistency
     static constexpr float epsilon = 0.0001f;

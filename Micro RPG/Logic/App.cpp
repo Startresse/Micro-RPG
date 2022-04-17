@@ -19,18 +19,12 @@ int App::run()
     {
         display_menu();
 
-        int n = Utility::input();
-
-        switch (n - static_cast<int>('0'))
+        switch (Utility::int_input())
         {
         case QUIT:
             return 0;
         case START_GAME:
         {
-
-            // skips input so it doesn't override first Game input
-            (void)getchar();
-
             nb_games++;
 
             Game game;
