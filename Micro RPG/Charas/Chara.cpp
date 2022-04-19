@@ -39,16 +39,12 @@ void Chara::special_move()
 
 bool Chara::is_stunned() const
 {
-    try
+    for (const Status* s : get_set<Stun>())
     {
-        for (const Status* s : statuses.at(typeid(Stun)))
-        {
-            const Stun* stun = static_cast<const Stun*>(s);
-            if (s->is_active())
-                return true;
-        }
+        const Stun* stun = static_cast<const Stun*>(s);
+        if (s->is_active())
+            return true;
     }
-    catch (std::out_of_range) {}
 
     return false;
 }
@@ -74,19 +70,13 @@ void Chara::stun()
 int Chara::attack_damage() const
 {
     int dmg = atk;
-    if (statuses.find(typeid(DamageModifier)) == statuses.end())
-        return dmg;
 
-    try
+    for (const Status* s : get_set<DamageModifier>())
     {
-        for (const Status* s : statuses.at(typeid(DamageModifier)))
-        {
-            const DamageModifier* dm = static_cast<const DamageModifier*>(s);
-            if (dm->is_active())
-                dm->apply(dmg);
-        }
+        const DamageModifier* dm = static_cast<const DamageModifier*>(s);
+        if (dm->is_active())
+            dm->apply(dmg);
     }
-    catch (std::out_of_range) {}
 
     return dmg;
 }
@@ -142,15 +132,12 @@ bool Chara::roll_skill() const
 
 void Chara::take_damage(int atk)
 {
-    try {
-        for (Status* s : statuses.at(typeid(Shield)))
-        {
-            Shield* shield = static_cast<Shield*>(s);
-            if (shield->is_active())
-                shield->take_hit(atk);
-        }
+    for (Status* s : get_set<Shield>())
+    {
+        Shield* shield = static_cast<Shield*>(s);
+        if (shield->is_active())
+            shield->take_hit(atk);
     }
-    catch (std::out_of_range) {}
 
     HP -= atk;
 }
