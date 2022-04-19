@@ -2,8 +2,6 @@
 
 #include <sstream>
 
-#include <iostream>
-
 void Shield::take_hit(int& dmg)
 {
     if (shield_value == 0)

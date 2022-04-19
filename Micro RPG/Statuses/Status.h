@@ -6,6 +6,7 @@ class Status
 {
 public:
     Status(int duration, bool is_a_buff_) : remaining_duration(duration), is_a_buff(is_a_buff_) {}
+    virtual ~Status() {}
 
     virtual void end_turn();
 
