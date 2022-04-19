@@ -16,6 +16,7 @@ public:
     bool is_debuff() const { return !is_buff(); }
 
     virtual std::string status_name() const = 0;
+    virtual std::string status_value() const = 0;
 
 private:
     int remaining_duration;

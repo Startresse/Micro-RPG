@@ -11,12 +11,12 @@ void Shield::take_hit(int& dmg)
     dmg = 0;
 }
 
-std::string Shield::status_name() const
+std::string Shield::status_value() const
 {
     std::stringstream output;
 
     if (shield_value > 0)
-        output << "shield: " << shield_value;
+        output << shield_value;
     else
         output << "shield broke and absorbed all the attack!";
 

@@ -14,12 +14,13 @@ public:
     ) :
         damage_multiplier(damage_multiplier_),
         extra_flat_damage(extra_flat_damage_),
-        Status(duration_, true) 
+        Status(duration_, true)
     {}
 
     void apply(int& dmg) const;
 
-    std::string status_name() const;
+    std::string status_name() const { return "damage modificator"; }
+    std::string status_value() const;
 
 protected:
     float damage_multiplier;

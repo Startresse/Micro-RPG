@@ -13,7 +13,8 @@ public:
     void take_hit(int& dmg);
     bool has_expired() const { return Status::has_expired() || shield_value == 0; }
 
-    std::string status_name() const;
+    std::string status_name() const { return "shield"; }
+    std::string status_value() const;
 
 protected:
     int shield_value;
