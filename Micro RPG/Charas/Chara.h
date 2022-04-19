@@ -69,14 +69,6 @@ private:
     // Similar statuses would be stored in the same vector accessible by the status type
     std::map<std::type_index, std::set<Status*>> statuses;
 
-    // Functions to make it easier to access a status knowing it's type
-    template<typename t>
-    std::set<Status*> status_set() const { return statuses.find(typeid(t))->second; }
-    template<typename t>
-    std::set<Status*>& status_set() { return statuses.find(typeid(t))->second; }
-    std::set<Status*> status_set(Status* s) const { return statuses.find(typeid(s))->second; }
-    std::set<Status*>& status_set(Status* s) { return statuses.find(typeid(s))->second; }
-
     // chance between 0 and 1.
     // 0.2 means 20% chance of success, etc..
     bool roll_skill() const;
