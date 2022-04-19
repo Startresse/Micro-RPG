@@ -11,8 +11,11 @@
 
 Chara::~Chara()
 {
-    for (Status* s : statuses)
-        delete s;
+    for (auto status_element : statuses)
+    {
+        for (Status* s : status_element.second)
+            delete s;
+    }
 }
 
 void Chara::special_move()
@@ -36,10 +39,10 @@ void Chara::special_move()
 
 bool Chara::is_stunned() const
 {
-    for (const Status* s : statuses)
+    for (const Status* s : status_set<Stun>())
     {
-        const Stun* stun = dynamic_cast<const Stun*>(s);
-        if (stun && stun->is_active())
+        const Stun* stun = static_cast<const Stun*>(s);
+        if (s->is_active())
             return true;
     }
 
@@ -48,7 +51,7 @@ bool Chara::is_stunned() const
 
 void Chara::add_status(Status* s)
 {
-    statuses.insert(s);
+    status_set(s).insert(s);
 }
 
 void Chara::stun_target() const
@@ -61,16 +64,16 @@ void Chara::stun_target() const
 
 void Chara::stun()
 {
-    statuses.insert(new Stun());
+    add_status(new Stun());
 }
 
 int Chara::attack_damage() const
 {
     int dmg = atk;
-    for (const Status* s : statuses)
+    for (const Status* s : status_set<DamageModifier>())
     {
-        const DamageModifier* dm = dynamic_cast<const DamageModifier*>(s);
-        if (dm && dm->is_active())
+        const DamageModifier* dm = static_cast<const DamageModifier*>(s);
+        if (dm->is_active())
             dm->apply(dmg);
     }
 
@@ -100,17 +103,23 @@ void Chara::attack()
 // TODO check dead + check dead for display
 void Chara::end_turn()
 {
-    std::vector<std::set<Status*>::iterator> to_delete;
-    for (std::set<Status*>::iterator it = statuses.begin(); it != statuses.end(); ++it)
+    for (auto statuses_elem : statuses)
     {
-        Status* s = *it;
-        s->end_turn();
+        std::vector<std::set<Status*>::iterator> to_delete;
+        auto& set = statuses_elem.second;
+        for (std::set<Status*>::iterator it = set.begin(); it != set.end(); ++it)
+        {
+            Status* s = *it;
+            s->end_turn();
 
-        if (s->has_expired())
-            to_delete.push_back(it);
+            if (s->has_expired())
+                to_delete.push_back(it);
+        }
+        for (const auto it : to_delete)
+        {
+            set.erase(it);
+        }
     }
-    for (const auto it : to_delete)
-        statuses.erase(it);
 
     current_cooldown = std::max(current_cooldown - 1, 0);
 }
@@ -122,10 +131,10 @@ bool Chara::roll_skill() const
 
 void Chara::take_damage(int atk)
 {
-    for (Status* s : statuses)
+    for (Status* s : status_set<Shield>())
     {
-        Shield* shield = dynamic_cast<Shield*>(s);
-        if (shield && shield->is_active())
+        Shield* shield = static_cast<Shield*>(s);
+        if (shield->is_active())
             shield->take_hit(atk);
     }
 
@@ -165,8 +174,19 @@ void Chara::display_CD() const
 }
 void Chara::display_statuses() const
 {
-    for (const Status* s : statuses)
-        std::cout << " | " << s->status_name();
+    for (const auto status_element : statuses)
+    {
+        const std::set<Status*>& s_set = status_element.second;
+        if (s_set.size() == 0)
+            continue;
+
+        std::cout << " | " << (*(s_set.begin()))->status_name();
+        for (const Status* s : status_element.second)
+        {
+            std::cout << "(debug : " << s->status_name() << ")";
+            std::cout << s->status_value();
+        }
+    }
 }
 
 void Chara::display_state() const
