@@ -104,10 +104,15 @@ void Chara::attack()
 // TODO check dead + check dead for display
 void Chara::end_turn()
 {
-    for (auto statuses_elem : statuses)
+    for (auto& statuses_elem : statuses)
     {
+        // will list expired statuses
         std::vector<std::set<Status*>::iterator> to_delete;
+
         auto& set = statuses_elem.second;
+
+        // end turn every status and store iterators to those that have expired
+        // erasing can't be done here because the iterator would become undefined.
         for (std::set<Status*>::iterator it = set.begin(); it != set.end(); ++it)
         {
             Status* s = *it;
@@ -116,10 +121,10 @@ void Chara::end_turn()
             if (s->has_expired())
                 to_delete.push_back(it);
         }
-        for (const auto it : to_delete)
-        {
+
+        // delete expired status
+        for (const auto& it : to_delete)
             set.erase(it);
-        }
     }
 
     current_cooldown = std::max(current_cooldown - 1, 0);
