@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "Misc/Utility.h"
+#include "Statuses/Cooldown.h"
 #include "Statuses/Stun.h"
 #include "Statuses/DamageModifier.h"
 #include "Statuses/Shield.h"
@@ -26,7 +27,7 @@ void Chara::special_move()
         return;
     }
 
-    current_cooldown = cooldown;
+    add_status(new Cooldown(cooldown, false));
 
     bool success = roll_skill();
 
@@ -37,11 +38,21 @@ void Chara::special_move()
     std::cout << (success ? "SUCCESS!" : "FAIL!") << "\n";
 }
 
+bool Chara::is_on_CD() const
+{
+    for (const Status* s : get_set<Cooldown>())
+    {
+        if (s->is_active())
+            return true;
+    }
+
+    return false;
+}
+
 bool Chara::is_stunned() const
 {
     for (const Status* s : get_set<Stun>())
     {
-        const Stun* stun = static_cast<const Stun*>(s);
         if (s->is_active())
             return true;
     }
@@ -121,8 +132,6 @@ void Chara::end_turn()
                 ++it;
         }
     }
-
-    current_cooldown = std::max(current_cooldown - 1, 0);
 }
 
 bool Chara::roll_skill() const
@@ -169,10 +178,6 @@ void Chara::display_HP() const
 {
     std::cout << " | HP: " << HP;
 }
-void Chara::display_CD() const
-{
-    std::cout << " | CD: " << current_cooldown;
-}
 void Chara::display_statuses() const
 {
     for (const auto status_element : statuses)
@@ -200,7 +205,6 @@ void Chara::display_state() const
 
     display_class_name();
     display_HP();
-    display_CD();
     display_statuses();
 
     std::cout << std::endl;

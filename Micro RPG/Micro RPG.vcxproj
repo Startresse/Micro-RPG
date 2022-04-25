@@ -162,6 +162,7 @@
     <ClInclude Include="Charas\Classes.h" />
     <ClInclude Include="Charas\CountableChara.h" />
     <ClInclude Include="Misc\Countable.h" />
+    <ClInclude Include="Statuses\Cooldown.h" />
     <ClInclude Include="Statuses\DamageModifier.h" />
     <ClInclude Include="Logic\Game.h" />
     <ClInclude Include="Logic\GameSettings.h" />

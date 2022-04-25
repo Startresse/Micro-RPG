@@ -18,7 +18,7 @@ public:
     virtual std::string status_name() const = 0;
     virtual std::string status_value() const = 0;
 
-private:
+protected:
     int remaining_duration;
 
     // TODO handle both buff and debuff
