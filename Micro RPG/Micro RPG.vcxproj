@@ -155,6 +155,7 @@
     <ClCompile Include="Statuses\Status.cpp" />
     <ClCompile Include="Logic\Team.cpp" />
     <ClCompile Include="Misc\Utility.cpp" />
+    <ClCompile Include="Statuses\StatusType.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Logic\App.h" />
@@ -171,6 +172,7 @@
     <ClInclude Include="Logic\Settings.h" />
     <ClInclude Include="Statuses\Shield.h" />
     <ClInclude Include="Statuses\Status.h" />
+    <ClInclude Include="Statuses\StatusType.h" />
     <ClInclude Include="Statuses\Stun.h" />
     <ClInclude Include="Logic\Team.h" />
     <ClInclude Include="Misc\Utility.h" />

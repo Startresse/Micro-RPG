@@ -6,6 +6,8 @@
 #include <typeindex>
 #include <stdexcept>
 
+#include "Statuses/StatusType.h"
+
 class Status;
 
 class Chara
@@ -65,7 +67,7 @@ protected:
 
 private:
     // Similar statuses would be stored in the same vector accessible by the status type
-    std::map<std::type_index, std::set<Status*>> statuses;
+    std::map<statustype::type_index, std::set<Status*>> statuses;
 
     template <typename t>
     std::set<Status*> get_set() const;

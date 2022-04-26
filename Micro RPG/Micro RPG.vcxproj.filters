@@ -51,6 +51,9 @@
     <ClCompile Include="Statuses\Shield.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Statuses\StatusType.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Logic\Game.h">
@@ -102,6 +105,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Statuses\Cooldown.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Statuses\StatusType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
