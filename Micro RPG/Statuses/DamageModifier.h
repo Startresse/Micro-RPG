@@ -19,7 +19,7 @@ public:
 
     void apply(int& dmg) const;
 
-    std::string status_name() const { return "damage modificator"; }
+    std::string status_name() const { return "dmg"; }
     std::string status_value() const;
 
 protected:

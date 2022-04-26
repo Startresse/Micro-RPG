@@ -38,26 +38,14 @@ void Chara::special_move()
     std::cout << (success ? "SUCCESS!" : "FAIL!") << "\n";
 }
 
-bool Chara::is_on_CD() const
+inline bool Chara::is_on_CD() const
 {
-    for (const Status* s : get_set<Cooldown>())
-    {
-        if (s->is_active())
-            return true;
-    }
-
-    return false;
+    return has_status<Cooldown>();
 }
 
-bool Chara::is_stunned() const
+inline bool Chara::is_stunned() const
 {
-    for (const Status* s : get_set<Stun>())
-    {
-        if (s->is_active())
-            return true;
-    }
-
-    return false;
+    return has_status<Stun>();
 }
 
 void Chara::add_status(Status* s)
@@ -177,6 +165,11 @@ void Chara::display_class_name() const
 void Chara::display_HP() const
 {
     std::cout << " | HP: " << HP;
+    if (const Status* s = has_status<Shield>())
+    {
+        const Shield* shield = static_cast<const Shield*>(s);
+        std::cout << " (" << shield->status_value() << ")";
+    }
 }
 void Chara::display_statuses() const
 {
@@ -186,7 +179,18 @@ void Chara::display_statuses() const
         if (s_set.size() == 0)
             continue;
 
-        std::cout << " | " << (*(s_set.begin()))->status_name() << " : ";
+        const Status* first_s = *(s_set.begin());
+
+        // skip shields for display
+        if (typeid(*first_s) == typeid(Shield))
+            continue;
+
+        // only display "stunned" when stunned
+        std::cout << " | " << first_s->status_name();
+        if (first_s->status_value() == "")
+            continue;
+
+        std::cout << " : ";
         for (const Status* s : status_element.second)
         {
             std::cout << s->status_value();

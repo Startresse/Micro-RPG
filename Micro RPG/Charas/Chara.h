@@ -28,6 +28,9 @@ public:
     void end_turn();
 
     bool is_dead() const { return HP <= 0; }
+
+    template <typename t>
+    const Status* has_status() const;
     bool is_stunned() const;
     bool is_on_CD() const;
 
@@ -88,4 +91,16 @@ std::set<Status*> Chara::get_set() const
     {
         return std::set<Status*>();
     }
+}
+
+template <typename t>
+const Status* Chara::has_status() const
+{
+    for (const Status* s : get_set<t>())
+    {
+        if (s->is_active())
+            return s;
+    }
+    
+    return nullptr;
 }
