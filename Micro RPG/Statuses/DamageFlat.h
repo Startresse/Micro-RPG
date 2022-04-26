@@ -15,6 +15,7 @@ public:
     {}
 
     void apply(int& dmg) const;
+    int flat_value() const { return extra_flat_dmg; }
 
     std::string status_name() const { return "flat dmg"; }
     std::string status_value() const;

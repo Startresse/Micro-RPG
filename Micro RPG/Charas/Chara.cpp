@@ -200,11 +200,33 @@ void Chara::display_statuses() const
         if (t == typeid(Stun))
             continue;
 
+        float multiplier = 1.f;
+        bool is_dm = t == typeid(DamageMultiplier);
+        int flat_modifier = 0;
+        bool is_fm = t == typeid(DamageFlat);
+
         std::cout << " : ";
         for (const Status* s : status_element.second)
         {
+            if (is_dm)
+            {
+                multiplier *= static_cast<const DamageMultiplier*>(s)->multiplier_value();
+                continue;
+            }
+
+            if (is_fm)
+            {
+                flat_modifier += static_cast<const DamageFlat*>(s)->flat_value();
+                continue;
+            }
+
             std::cout << s->status_value();
         }
+
+        if (is_dm)
+            std::cout << "x" << multiplier;
+        if (is_fm)
+            std::cout << (flat_modifier > 0 ? " +" : "") << flat_modifier;
     }
 }
 

@@ -15,6 +15,7 @@ public:
     {}
 
     void apply(int& dmg) const;
+    float multiplier_value() const { return damage_multiplier; }
 
     std::string status_name() const { return "dmg mult"; }
     std::string status_value() const;
