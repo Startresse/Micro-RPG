@@ -31,11 +31,12 @@ void Game::run(const GameSettings* gs)
     {
         if (!gs->auto_turn)
         {
-            std::cout << "press any to continue...";
+            std::cout << "press any key to continue...";
             (void)_getch();
         }
 
-        std::cout << "\nTURN: " << ++nb_round << "\n";
+        std::cout << "\n\n\n\n\n-----------------------\n\n\n\n\n";
+        std::cout << "TURN: " << ++nb_round << "\n";
         turn();
     }
 
