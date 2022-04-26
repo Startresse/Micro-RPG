@@ -188,14 +188,16 @@ void Chara::display_statuses() const
             continue;
 
         const Status* first_s = *(s_set.begin());
+        std::type_index t = typeid(*first_s);
 
         // skip shields for display
-        if (typeid(*first_s) == typeid(Shield))
+        if (t == typeid(Shield))
             continue;
 
-        // only display "stunned" when stunned
         std::cout << " | " << first_s->status_name();
-        if (first_s->status_value() == "")
+
+        // only display "stunned" when stunned
+        if (t == typeid(Stun))
             continue;
 
         std::cout << " : ";
