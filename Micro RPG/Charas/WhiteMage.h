@@ -14,6 +14,7 @@ protected:
     Chara* ally_target;
     
     void skill();
+    void reset_target(Team* enemy_team, Team* ally_team);
 
 private:
     static const int default_HP = 30;

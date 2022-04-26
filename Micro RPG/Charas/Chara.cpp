@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "Misc/Utility.h"
+#include "Logic/Team.h"
 #include "Statuses/Cooldown.h"
 #include "Statuses/Stun.h"
 #include "Statuses/DamageMultiplier.h"
@@ -87,13 +88,18 @@ void Chara::take_damage(int atk)
     HP -= atk;
 }
 
-void Chara::set_target(Chara* c)
+// TODO smart targeting
+void Chara::reset_target(Team* enemy_team, Team* ally_team)
 {
-    if (!c)
+    if (target && !target->is_dead())
         return;
 
-    target = c;
-    std::cout << name() << " now targets " << c->name() << ".\n";
+    Chara* target = enemy_team->get_random_alive_chara();
+    if (target)
+    {
+        this->target = target;
+        std::cout << name() << " now targets " << target->name() << ".\n";
+    }
 }
 
 void Chara::end_turn()

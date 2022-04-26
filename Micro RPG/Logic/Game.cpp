@@ -35,8 +35,8 @@ void Game::run(const GameSettings* gs)
             (void)_getch();
         }
 
-        std::cout << "\n\n\n\n\n-----------------------\n\n\n\n\n";
-        std::cout << "TURN: " << ++nb_round << "\n";
+        std::cout << "\n\n\n\n-----------------------\n\n\n\n";
+        std::cout << "TURN: " << ++nb_round << "\n\n\n\n";
         turn();
     }
 
@@ -101,4 +101,10 @@ void Game::end_turn()
 {
     team1.end_turn();
     team2.end_turn();
+}
+
+void Game::retarget()
+{
+    team1.retarget();
+    team2.retarget();
 }

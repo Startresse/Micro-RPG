@@ -35,11 +35,11 @@ void Team::add_player(classes c)
 void Team::set_enemy_team(Team* team)
 {
     enemy_team = team;
-    target();
+    retarget();
 }
 
 // a team looses when all of its member are dead
-bool Team::lost()
+bool Team::lost() const
 {
     for (const Chara* chara : characters)
     {
@@ -50,14 +50,14 @@ bool Team::lost()
     return true;
 }
 
-void Team::display_state()
+void Team::display_state() const
 {
     for (const Chara* chara : characters)
         chara->display_state();
 }
 
 // TODO beter targeting system
-Chara* Team::get_first_alive_chara()
+Chara* Team::get_first_alive_chara() const
 {
     for (Chara* chara : characters)
     {
@@ -69,7 +69,7 @@ Chara* Team::get_first_alive_chara()
 }
 
 // TODO test
-Chara* Team::get_random_alive_chara()
+Chara* Team::get_random_alive_chara() const
 {
     std::vector<int> char_id(size());
     std::iota(char_id.begin(), char_id.end(), 0);
@@ -85,37 +85,33 @@ Chara* Team::get_random_alive_chara()
     return nullptr;
 }
 
-Chara* Team::get_target()
+Chara* Team::get_most_damaged_chara() const
 {
-    Chara* target = nullptr;
-    if (target_system == TargetSystem::FOCUS)
-        target = enemy_team->get_first_alive_chara();
-    else if (target_system == TargetSystem::RANDOM)
-        target = enemy_team->get_random_alive_chara();
+    Chara* tmp_most_damaged = characters[0];
+    int max_lost_hp = tmp_most_damaged->lost_hp();
 
-    return target;
+    for (std::vector<Chara*>::const_iterator it = std::next(characters.begin()); it != characters.end(); ++it)
+    {
+        if ((*it)->is_dead())
+            continue;
+
+        if ((*it)->lost_hp() > max_lost_hp)
+        {
+            tmp_most_damaged = *it;
+            max_lost_hp = tmp_most_damaged->lost_hp();
+        }
+    }
+
+    return tmp_most_damaged;
 }
 
-void Team::target()
+void Team::retarget()
 {
     for (Chara* chara : characters)
     {
-        if (chara->has_good_target())
-            continue;
-
-        Chara* target = get_target();
-
-        if (target == nullptr)
-            return;
-
-        chara->set_target(target);
+        if (!chara->is_dead())
+            chara->reset_target(enemy_team, this);
     }
-}
-
-void Team::check_update_target(Chara* chara)
-{
-    if (!chara->has_good_target())
-        chara->set_target(get_target());
 }
 
 // TODO remove Team and and target to Chara
@@ -126,7 +122,7 @@ void Team::special_move()
         if (chara->is_dead())
             continue;
 
-        check_update_target(chara);
+        chara->reset_target(enemy_team, this);
         chara->special_move();
     }
 }
@@ -138,12 +134,12 @@ void Team::attack()
         if (chara->is_dead())
             continue;
 
-        check_update_target(chara);
+        chara->reset_target(enemy_team, this);
         chara->attack();
     }
 }
 
-void Team::end_turn()
+void Team::end_turn() const
 {
     for (Chara* chara : characters)
     {

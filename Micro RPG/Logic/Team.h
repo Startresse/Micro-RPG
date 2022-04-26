@@ -6,42 +6,32 @@
 class Chara;
 enum class classes;
 
-enum class TargetSystem
-{
-    FOCUS,
-    RANDOM,
-};
-
 class Team
 {
 public:
-    Team() : characters(std::vector<Chara*>(0)), target_system(TargetSystem::RANDOM) {}
+    Team() : characters(std::vector<Chara*>(0)) {}
     ~Team();
 
     void add_player(classes c);
-    void target();
+    void retarget();
     void set_enemy_team(Team* team);
 
-    void check_update_target(Chara* chara);
-
-    bool lost();
-    void display_state();
+    bool lost() const;
+    void display_state() const;
     void special_move();
     void attack();
-    void end_turn();
+    void end_turn() const;
 
-    Chara* get_first_alive_chara();
-    Chara* get_random_alive_chara();
-    int size() { return static_cast<int>(characters.size()); }
+    Chara* get_first_alive_chara() const;
+    Chara* get_random_alive_chara() const;
+    Chara* get_most_damaged_chara() const;
+    int size() const { return static_cast<int>(characters.size()); }
 
     friend std::ostream& operator<<(std::ostream& os, const Team& team);
 
 private:
     std::vector<Chara*> characters;
-    TargetSystem target_system;
 
     Team* enemy_team = nullptr;
-
-    Chara* get_target();
 };
 

@@ -15,6 +15,7 @@ public:
     void end_turn();
     void special_moves();
     void normal_attacks();
+    void retarget();
 
     void turn();
     void game_end();

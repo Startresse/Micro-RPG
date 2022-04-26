@@ -9,6 +9,7 @@
 #include "Statuses/StatusType.h"
 
 class Status;
+class Team;
 
 class Chara
 {
@@ -27,7 +28,7 @@ public:
     virtual void take_damage(int atk);
     void heal(int heal_amount);
 
-    void set_target(Chara* c);
+    virtual void reset_target(Team* enemy_team, Team* ally_team);
 
     void end_turn();
 
@@ -45,6 +46,7 @@ public:
     /// return true if target is OK
     bool has_good_target() const;
 
+    int lost_hp() const { return max_HP - HP; }
 
     /* Display */
 
