@@ -1,8 +1,11 @@
+#include <vector>
 #include <typeindex>
 #include <map>
 
 namespace statustype
 {
+    static std::vector<std::type_index> status_type_list;
+
     struct type_index
     {
         std::type_index index = std::type_index(typeid(void));

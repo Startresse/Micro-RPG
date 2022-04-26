@@ -13,7 +13,7 @@
 
 Chara::~Chara()
 {
-    for (auto status_element : statuses)
+    for (auto& status_element : statuses)
     {
         for (Status* s : status_element.second)
             delete s;
@@ -135,6 +135,18 @@ bool Chara::roll_skill() const
     return Utility::roll(skill_success_rate);
 }
 
+std::set<Status*> Chara::get_set(const std::type_index& t) const
+{
+    try
+    {
+        return statuses.at(t);
+    }
+    catch (const std::out_of_range&)
+    {
+        return std::set<Status*>();
+    }
+}
+
 void Chara::take_damage(int atk)
 {
     for (Status* s : get_set<Shield>())
@@ -181,7 +193,7 @@ void Chara::display_HP() const
 }
 void Chara::display_statuses() const
 {
-    for (const auto status_element : statuses)
+    for (const auto& status_element : statuses)
     {
         const std::set<Status*>& s_set = status_element.second;
         if (s_set.size() == 0)
@@ -200,33 +212,29 @@ void Chara::display_statuses() const
         if (t == typeid(Stun))
             continue;
 
-        float multiplier = 1.f;
-        bool is_dm = t == typeid(DamageMultiplier);
-        int flat_modifier = 0;
-        bool is_fm = t == typeid(DamageFlat);
-
-        std::cout << " : ";
-        for (const Status* s : status_element.second)
+        if (t == typeid(DamageMultiplier))
         {
-            if (is_dm)
-            {
+            float multiplier = 1.f;
+            for (const Status* s : s_set)
                 multiplier *= static_cast<const DamageMultiplier*>(s)->multiplier_value();
-                continue;
-            }
-
-            if (is_fm)
-            {
-                flat_modifier += static_cast<const DamageFlat*>(s)->flat_value();
-                continue;
-            }
-
-            std::cout << s->status_value();
+            std::cout << " x" << multiplier;
+            continue;
         }
 
-        if (is_dm)
-            std::cout << "x" << multiplier;
-        if (is_fm)
-            std::cout << (flat_modifier > 0 ? " +" : "") << flat_modifier;
+        if (t == typeid(DamageFlat))
+        {
+            int flat_modifier = 0;
+            for (const Status* s : s_set)
+                flat_modifier += static_cast<const DamageFlat*>(s)->flat_value();
+            std::cout << (flat_modifier > 0 ? " +" : " ") << flat_modifier;
+            continue;
+        }
+
+        // default Status display behaviour
+        std::cout << " : ";
+        for (const Status* s : s_set)
+            std::cout << s->status_value();
+
     }
 }
 

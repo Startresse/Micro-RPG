@@ -75,25 +75,13 @@ private:
     std::map<statustype::type_index, std::set<Status*>> statuses;
 
     template <typename t>
-    std::set<Status*> get_set() const;
+    std::set<Status*> get_set() const { return get_set(typeid(t)); }
+    std::set<Status*> get_set(const std::type_index& t) const;
 
     // chance between 0 and 1.
     // 0.2 means 20% chance of success, etc..
     bool roll_skill() const;
 };
-
-template <typename t>
-std::set<Status*> Chara::get_set() const
-{
-    try
-    {
-        return statuses.at(typeid(t));
-    }
-    catch (const std::out_of_range&)
-    {
-        return std::set<Status*>();
-    }
-}
 
 template <typename t>
 const Status* Chara::has_status() const

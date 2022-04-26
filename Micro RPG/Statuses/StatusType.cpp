@@ -8,10 +8,12 @@
 
 using namespace statustype;
 
+
 const std::map<std::type_index, int> type_index::ranks = []()
 {
     std::map<std::type_index, int> result;
-    std::type_index index_order[] =
+
+    std::vector<std::type_index> status_type_list =
     {
         std::type_index(typeid(Shield)),
         std::type_index(typeid(Cooldown)),
@@ -20,8 +22,8 @@ const std::map<std::type_index, int> type_index::ranks = []()
         std::type_index(typeid(DamageFlat)),
     };
 
-    for (size_t i = 0; i < std::size(index_order); ++i)
-        result[index_order[i]] = static_cast<int>(i + 1);
+    for (size_t i = 0; i < status_type_list.size(); ++i)
+        result[status_type_list[i]] = static_cast<int>(i + 1);
 
     return result;
 }();
