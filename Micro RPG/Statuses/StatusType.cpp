@@ -5,6 +5,7 @@
 #include "Shield.h"
 #include "Stun.h"
 #include "DamageFlat.h"
+#include "Guard.h"
 
 using namespace statustype;
 
@@ -16,6 +17,7 @@ const std::map<std::type_index, int> type_index::ranks = []()
     std::vector<std::type_index> status_type_list =
     {
         std::type_index(typeid(Shield)),
+        std::type_index(typeid(Guard)),
         std::type_index(typeid(Cooldown)),
         std::type_index(typeid(Stun)),
         std::type_index(typeid(DamageMultiplier)),

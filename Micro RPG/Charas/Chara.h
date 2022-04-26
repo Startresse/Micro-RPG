@@ -68,6 +68,7 @@ protected:
 
     int attack_damage() const;
     void stun_target() const;
+    void guard(Chara* c);
     virtual void skill() = 0;
 
     void add_status(Status* s);

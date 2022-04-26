@@ -11,6 +11,7 @@
 #include "Statuses/DamageMultiplier.h"
 #include "Statuses/DamageFlat.h"
 #include "Statuses/Shield.h"
+#include "Statuses/Guard.h"
 
 
 /* Construction */
@@ -77,6 +78,19 @@ void Chara::special_move()
 
 void Chara::take_damage(int atk)
 {
+    // Redirect attack to guardian
+    if (const Status* s = has_status<Guard>())
+    {
+        Chara* guardian = static_cast<const Guard*>(s)->get_guardian();
+
+        // Guardian can't have a guardian to prevent infinite loop
+        if (!guardian->has_status<Guard>())
+        {
+            guardian->take_damage(atk);
+            return;
+        }
+    }
+
     // TODO shield stacking
     for (Status* s : get_set<Shield>())
     {
@@ -151,6 +165,11 @@ void Chara::stun_target() const
         return;
 
     target->add_status(new Stun());
+}
+
+void Chara::guard(Chara* c)
+{
+    c->add_status(new Guard(this));
 }
 
 void Chara::heal(int amount)

@@ -60,6 +60,9 @@
     <ClCompile Include="Charas\WhiteMage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Statuses\Guard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Logic\Game.h">
@@ -126,6 +129,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Charas\Dummy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Statuses\Guard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

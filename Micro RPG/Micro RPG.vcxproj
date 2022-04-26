@@ -153,6 +153,7 @@
     <ClCompile Include="Micro RPG.cpp" />
     <ClCompile Include="Charas\Orc.cpp" />
     <ClCompile Include="Logic\Settings.cpp" />
+    <ClCompile Include="Statuses\Guard.cpp" />
     <ClCompile Include="Statuses\Shield.cpp" />
     <ClCompile Include="Statuses\Status.cpp" />
     <ClCompile Include="Logic\Team.cpp" />
@@ -176,6 +177,7 @@
     <ClInclude Include="Charas\Knight.h" />
     <ClInclude Include="Charas\Orc.h" />
     <ClInclude Include="Logic\Settings.h" />
+    <ClInclude Include="Statuses\Guard.h" />
     <ClInclude Include="Statuses\Shield.h" />
     <ClInclude Include="Statuses\Status.h" />
     <ClInclude Include="Statuses\StatusType.h" />
