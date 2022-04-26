@@ -116,6 +116,9 @@
     <ClInclude Include="Statuses\DamageFlat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Statuses\DamageModifier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />

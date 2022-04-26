@@ -247,7 +247,7 @@ void Chara::display_statuses() const
         {
             float multiplier = 1.f;
             for (const Status* s : s_set)
-                multiplier *= static_cast<const DamageMultiplier*>(s)->multiplier_value();
+                multiplier *= static_cast<const DamageMultiplier*>(s)->value();
             std::cout << " x" << multiplier;
             continue;
         }
@@ -256,7 +256,7 @@ void Chara::display_statuses() const
         {
             int flat_modifier = 0;
             for (const Status* s : s_set)
-                flat_modifier += static_cast<const DamageFlat*>(s)->flat_value();
+                flat_modifier += static_cast<const DamageFlat*>(s)->value();
             std::cout << (flat_modifier > 0 ? " +" : " ") << flat_modifier;
             continue;
         }

@@ -13,5 +13,5 @@ Knight::Knight() :
 
 void Knight::skill()
 {
-    add_status(new DamageMultiplier(2.0f));
+    add_status(new DamageMultiplier(2.f));
 }
