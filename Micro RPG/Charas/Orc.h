@@ -13,12 +13,12 @@ public:
     std::string special_move_name() const { return "STUN"; }
 
 protected:
-    void skill();
+    void skill() { stun_target(); }
 
 private:
     static const int default_HP = 60;
     static const int default_atk = 8;
     static const int default_cooldown = 5;
-    static const float default_skill_success_rate;
+    static const int default_skill_success_rate = 20;
 };
 

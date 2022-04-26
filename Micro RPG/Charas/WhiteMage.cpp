@@ -4,8 +4,6 @@
 
 #include "Logic/Team.h"
 
-const float WhiteMage::default_skill_success_rate = 0.50f;
-
 WhiteMage::WhiteMage() :
     ally_target(nullptr),
     CountableChara(default_HP, default_atk, default_cooldown, default_skill_success_rate)

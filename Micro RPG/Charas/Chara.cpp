@@ -16,7 +16,7 @@
 
 /* Construction */
 
-Chara::Chara(int HP_, int atk_, int cooldown_, float skill_success_rate_) :
+Chara::Chara(int HP_, int atk_, int cooldown_, int skill_success_rate_) :
     HP(HP_),
     max_HP(HP),
     atk(atk_),
@@ -184,7 +184,7 @@ void Chara::add_status(Status* s)
 
 bool Chara::roll_skill() const
 {
-    return Utility::roll(skill_success_rate);
+    return Utility::roll(static_cast<float>(skill_success_rate) / 100.f);
 }
 
 

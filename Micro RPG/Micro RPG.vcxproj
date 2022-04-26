@@ -151,7 +151,6 @@
     <ClCompile Include="Logic\Game.cpp" />
     <ClCompile Include="Charas\Knight.cpp" />
     <ClCompile Include="Micro RPG.cpp" />
-    <ClCompile Include="Charas\Orc.cpp" />
     <ClCompile Include="Logic\Settings.cpp" />
     <ClCompile Include="Statuses\Guard.cpp" />
     <ClCompile Include="Statuses\Shield.cpp" />

@@ -18,6 +18,6 @@ private:
     static const int default_shield = 50;
     static const int default_atk = 5;
     static const int default_cooldown = 3;
-    static const float default_skill_success_rate;
+    static const int default_skill_success_rate = 60;
 };
 

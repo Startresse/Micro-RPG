@@ -16,7 +16,7 @@ class Chara
 public:
     /* Construction */
 
-    Chara(int HP_, int atk_, int cooldown_, float skill_success_rate_);
+    Chara(int HP_, int atk_, int cooldown_, int skill_success_rate_);
     virtual ~Chara();
 
 
@@ -60,7 +60,8 @@ protected:
     int HP;
     int atk;
     int cooldown;
-    float skill_success_rate;
+    // succes chance for 100 roll (ie % chance)
+    int skill_success_rate;
 
     Chara* target;
 

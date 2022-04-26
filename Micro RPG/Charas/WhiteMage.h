@@ -20,5 +20,5 @@ private:
     static const int default_HP = 30;
     static const int default_atk = 3;
     static const int default_cooldown = 2;
-    static const float default_skill_success_rate;
+    static const int default_skill_success_rate = 50;
 };

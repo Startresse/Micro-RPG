@@ -27,9 +27,6 @@
     <ClCompile Include="Charas\Knight.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Charas\Orc.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Logic\Team.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
