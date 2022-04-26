@@ -13,21 +13,25 @@ class Status;
 class Chara
 {
 public:
-    Chara(int HP_, int atk_, int cooldown_, float skill_success_rate_) :
-        HP(HP_),
-        atk(atk_),
-        cooldown(cooldown_),
-        skill_success_rate(skill_success_rate_),
-        target(nullptr)
-    {}
+    /* Construction */
 
+    Chara(int HP_, int atk_, int cooldown_, float skill_success_rate_);
     virtual ~Chara();
 
+
+    /* Combat */
+
     void attack();
+    void special_move();
+
+    virtual void take_damage(int atk);
+
+    void set_target(Chara* c);
 
     void end_turn();
 
-    bool is_dead() const { return HP <= 0; }
+
+    /* Status */
 
     // indirection that allows to recover the status for non stackable statuses
     template <typename t>
@@ -35,33 +39,38 @@ public:
 
     bool is_stunned() const;
     bool is_on_CD() const;
+    bool is_dead() const { return HP <= 0; }
 
-    void special_move();
-    virtual void take_damage(int atk);
+    /// return true if target is OK
+    bool has_good_target() const;
+
+
+    /* Display */
 
     void display_state() const;
 
     virtual std::string name() const = 0;
 
-    void set_target(Chara* c);
-    /// return true if target is OK
-    bool has_good_target() const;
-
 protected:
+    /* Characteristics */
+
     int HP;
     int atk;
     int cooldown;
     float skill_success_rate;
 
-    void add_status(Status* s);
+    Chara* target;
 
-    void stun_target() const;
-    void stun();
+    /* Combat */
 
     int attack_damage() const;
+    void stun_target() const;
     virtual void skill() = 0;
 
-    Chara* target;
+    void add_status(Status* s);
+
+
+    /* Display */
 
     virtual std::string class_name() const = 0;
     virtual std::string special_move_name() const = 0;
@@ -71,16 +80,22 @@ protected:
     void display_statuses() const;
 
 private:
+
+    /* Combat */
+
+    // chance between 0 and 1.
+    // 0.2 means 20% chance of success, etc..
+    bool roll_skill() const;
+
+
+    /* Status */
+
     // Similar statuses would be stored in the same vector accessible by the status type
     std::map<statustype::type_index, std::set<Status*>> statuses;
 
     template <typename t>
     std::set<Status*> get_set() const { return get_set(typeid(t)); }
     std::set<Status*> get_set(const std::type_index& t) const;
-
-    // chance between 0 and 1.
-    // 0.2 means 20% chance of success, etc..
-    bool roll_skill() const;
 };
 
 template <typename t>

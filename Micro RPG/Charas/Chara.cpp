@@ -11,6 +11,17 @@
 #include "Statuses/DamageFlat.h"
 #include "Statuses/Shield.h"
 
+
+/* Construction */
+
+Chara::Chara(int HP_, int atk_, int cooldown_, float skill_success_rate_) :
+    HP(HP_),
+    atk(atk_),
+    cooldown(cooldown_),
+    skill_success_rate(skill_success_rate_),
+    target(nullptr)
+{}
+
 Chara::~Chara()
 {
     for (auto& status_element : statuses)
@@ -18,6 +29,29 @@ Chara::~Chara()
         for (Status* s : status_element.second)
             delete s;
     }
+}
+
+
+/* Combat */
+
+void Chara::attack()
+{
+    if (!has_good_target())
+    {
+        std::cout << name() << " has no target!\n";
+        return;
+    }
+
+    if (is_stunned())
+    {
+        std::cout << name() << " is stunned!\n";
+        return;
+    }
+
+    int dmg = attack_damage();
+    target->take_damage(dmg);
+
+    std::cout << name() << " attacks " << target->name() << " for " << dmg << " damage.\n";
 }
 
 void Chara::special_move()
@@ -39,73 +73,26 @@ void Chara::special_move()
     std::cout << (success ? "SUCCESS!" : "FAIL!") << "\n";
 }
 
-inline bool Chara::is_on_CD() const
+void Chara::take_damage(int atk)
 {
-    return has_status<Cooldown>();
+    // TODO shield stacking
+    for (Status* s : get_set<Shield>())
+    {
+        Shield* shield = static_cast<Shield*>(s);
+        if (shield->is_active())
+            shield->take_hit(atk);
+    }
+
+    HP -= atk;
 }
 
-inline bool Chara::is_stunned() const
+void Chara::set_target(Chara* c)
 {
-    return has_status<Stun>();
-}
-
-void Chara::add_status(Status* s)
-{
-    statuses[typeid(*s)].insert(s);
-}
-
-void Chara::stun_target() const
-{
-    if (!has_good_target())
+    if (!c)
         return;
 
-    target->stun();
-}
-
-void Chara::stun()
-{
-    add_status(new Stun());
-}
-
-int Chara::attack_damage() const
-{
-    int dmg = atk;
-
-    for (const Status* s : get_set<DamageMultiplier>())
-    {
-        const DamageMultiplier* dm = static_cast<const DamageMultiplier*>(s);
-        if (dm->is_active())
-            dm->apply(dmg);
-    }
-
-    for (const Status* s : get_set<DamageFlat>())
-    {
-        const DamageFlat* flat = static_cast<const DamageFlat*>(s);
-        if (flat->is_active())
-            flat->apply(dmg);
-    }
-
-    return dmg;
-}
-
-void Chara::attack()
-{
-    if (!has_good_target())
-    {
-        std::cout << name() << " has no target!\n";
-        return;
-    }
-
-    if (is_stunned())
-    {
-        std::cout << name() << " is stunned!\n";
-        return;
-    }
-
-    int dmg = attack_damage();
-    target->take_damage(dmg);
-
-    std::cout << name() << " attacks " << target->name() << " for " << dmg << " damage.\n";
+    target = c;
+    std::cout << name() << " now targets " << c->name() << ".\n";
 }
 
 void Chara::end_turn()
@@ -130,9 +117,64 @@ void Chara::end_turn()
     }
 }
 
+int Chara::attack_damage() const
+{
+    int dmg = atk;
+
+    for (const Status* s : get_set<DamageMultiplier>())
+    {
+        const DamageMultiplier* dm = static_cast<const DamageMultiplier*>(s);
+        if (dm->is_active())
+            dm->apply(dmg);
+    }
+
+    for (const Status* s : get_set<DamageFlat>())
+    {
+        const DamageFlat* flat = static_cast<const DamageFlat*>(s);
+        if (flat->is_active())
+            flat->apply(dmg);
+    }
+
+    return dmg;
+}
+
+void Chara::stun_target() const
+{
+    if (!has_good_target())
+        return;
+
+    target->add_status(new Stun());
+}
+
+void Chara::add_status(Status* s)
+{
+    statuses[typeid(*s)].insert(s);
+}
+
 bool Chara::roll_skill() const
 {
     return Utility::roll(skill_success_rate);
+}
+
+
+/* Status */
+
+inline bool Chara::is_stunned() const
+{
+    return has_status<Stun>();
+}
+
+inline bool Chara::is_on_CD() const
+{
+    return has_status<Cooldown>();
+}
+
+bool Chara::has_good_target() const
+{
+    if (target == nullptr or target->is_dead())
+        return false;
+
+    return true;
 }
 
 std::set<Status*> Chara::get_set(const std::type_index& t) const
@@ -147,36 +189,25 @@ std::set<Status*> Chara::get_set(const std::type_index& t) const
     }
 }
 
-void Chara::take_damage(int atk)
-{
-    for (Status* s : get_set<Shield>())
-    {
-        Shield* shield = static_cast<Shield*>(s);
-        if (shield->is_active())
-            shield->take_hit(atk);
-    }
 
-    HP -= atk;
-}
-
-void Chara::set_target(Chara* c)
-{
-    if (!c)
-        return;
-
-    target = c;
-    std::cout << name() << " now targets " << c->name() << ".\n";
-}
-
-bool Chara::has_good_target() const
-{
-    if (target == nullptr or target->is_dead())
-        return false;
-
-    return true;
-}
 
 /* DISPLAY */
+
+void Chara::display_state() const
+{
+    if (is_dead())
+    {
+        display_class_name();
+        std::cout << " is dead.\n";
+        return;
+    }
+
+    display_class_name();
+    display_HP();
+    display_statuses();
+
+    std::cout << std::endl;
+}
 
 void Chara::display_class_name() const
 {
@@ -236,20 +267,4 @@ void Chara::display_statuses() const
             std::cout << s->status_value();
 
     }
-}
-
-void Chara::display_state() const
-{
-    if (is_dead())
-    {
-        display_class_name();
-        std::cout << " is dead.\n";
-        return;
-    }
-
-    display_class_name();
-    display_HP();
-    display_statuses();
-
-    std::cout << std::endl;
 }
