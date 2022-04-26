@@ -12,6 +12,7 @@ Game::Game()
 
     team1.add_player(classes::Knight);
     team1.add_player(classes::Knight);
+
     team2.add_player(classes::Orc);
     team2.add_player(classes::WhiteMage);
 

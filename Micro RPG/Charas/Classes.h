@@ -2,6 +2,7 @@
 
 enum class classes
 {
+    Dummy,
     Knight,
     Orc,
     WhiteMage,

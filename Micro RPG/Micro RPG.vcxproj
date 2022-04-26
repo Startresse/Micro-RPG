@@ -160,6 +160,7 @@
     <ClCompile Include="Statuses\StatusType.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Charas\Dummy.h" />
     <ClInclude Include="Charas\WhiteMage.h" />
     <ClInclude Include="Logic\App.h" />
     <ClInclude Include="Charas\Chara.h" />

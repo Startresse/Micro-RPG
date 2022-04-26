@@ -4,6 +4,7 @@
 #include <numeric>
 
 #include "Charas/Classes.h"
+#include "Charas/Dummy.h"
 #include "Charas/Knight.h"
 #include "Charas/Orc.h"
 #include "Charas/WhiteMage.h"
@@ -19,6 +20,9 @@ void Team::add_player(classes c)
 {
     switch (c)
     {
+    case classes::Dummy:
+        characters.push_back(new Dummy(5));
+        break;
     case classes::Knight:
         characters.push_back(new Knight());
         break;
