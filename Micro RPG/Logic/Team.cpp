@@ -6,6 +6,7 @@
 #include "Charas/Classes.h"
 #include "Charas/Knight.h"
 #include "Charas/Orc.h"
+#include "Charas/WhiteMage.h"
 #include "Misc/Utility.h"
 
 Team::~Team()
@@ -24,6 +25,8 @@ void Team::add_player(classes c)
     case classes::Orc:
         characters.push_back(new Orc());
         break;
+    case classes::WhiteMage:
+        characters.push_back(new WhiteMage());
     default:
         break;
     }

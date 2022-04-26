@@ -4,4 +4,5 @@ enum class classes
 {
     Knight,
     Orc,
+    WhiteMage,
 };

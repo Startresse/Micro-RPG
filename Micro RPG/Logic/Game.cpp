@@ -13,7 +13,7 @@ Game::Game()
     team1.add_player(classes::Knight);
     team1.add_player(classes::Knight);
     team2.add_player(classes::Orc);
-    team2.add_player(classes::Orc);
+    team2.add_player(classes::WhiteMage);
 
     std::cout << "TEAM 1: " << team1 << std::endl;
     std::cout << "TEAM 2: " << team2 << std::endl;

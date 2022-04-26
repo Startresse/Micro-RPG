@@ -16,6 +16,7 @@
 
 Chara::Chara(int HP_, int atk_, int cooldown_, float skill_success_rate_) :
     HP(HP_),
+    max_HP(HP),
     atk(atk_),
     cooldown(cooldown_),
     skill_success_rate(skill_success_rate_),
@@ -144,6 +145,11 @@ void Chara::stun_target() const
         return;
 
     target->add_status(new Stun());
+}
+
+void Chara::heal(int amount)
+{
+    HP = std::min(HP + amount, max_HP);
 }
 
 void Chara::add_status(Status* s)

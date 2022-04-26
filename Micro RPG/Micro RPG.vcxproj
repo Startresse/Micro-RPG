@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Charas\WhiteMage.cpp" />
     <ClCompile Include="Logic\App.cpp" />
     <ClCompile Include="Charas\Chara.cpp" />
     <ClCompile Include="Statuses\DamageFlat.cpp" />
@@ -159,6 +160,7 @@
     <ClCompile Include="Statuses\StatusType.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Charas\WhiteMage.h" />
     <ClInclude Include="Logic\App.h" />
     <ClInclude Include="Charas\Chara.h" />
     <ClInclude Include="Charas\Classes.h" />

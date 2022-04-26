@@ -57,6 +57,9 @@
     <ClCompile Include="Statuses\DamageFlat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Charas\WhiteMage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Logic\Game.h">
@@ -117,6 +120,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Statuses\DamageModifier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Charas\WhiteMage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

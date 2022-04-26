@@ -25,6 +25,7 @@ public:
     void special_move();
 
     virtual void take_damage(int atk);
+    void heal(int heal_amount);
 
     void set_target(Chara* c);
 
@@ -80,6 +81,8 @@ protected:
     void display_statuses() const;
 
 private:
+
+    int max_HP;
 
     /* Combat */
 
