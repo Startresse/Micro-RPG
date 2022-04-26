@@ -3,10 +3,10 @@
 #include "Status.h"
 
 // split into damage multiplier and damage flat
-class DamageModifier : public Status
+class DamageMultiplier : public Status
 {
 public:
-    DamageModifier
+    DamageMultiplier 
     (
         float damage_multiplier_ = default_damage_multiplier,
         int extra_flat_damage_ = default_extra_flat_damage,

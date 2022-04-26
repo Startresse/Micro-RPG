@@ -7,7 +7,7 @@
 #include "Misc/Utility.h"
 #include "Statuses/Cooldown.h"
 #include "Statuses/Stun.h"
-#include "Statuses/DamageModifier.h"
+#include "Statuses/DamageMultiplier.h"
 #include "Statuses/Shield.h"
 
 Chara::~Chara()
@@ -70,9 +70,9 @@ int Chara::attack_damage() const
 {
     int dmg = atk;
 
-    for (const Status* s : get_set<DamageModifier>())
+    for (const Status* s : get_set<DamageMultiplier>())
     {
-        const DamageModifier* dm = static_cast<const DamageModifier*>(s);
+        const DamageMultiplier* dm = static_cast<const DamageMultiplier*>(s);
         if (dm->is_active())
             dm->apply(dmg);
     }

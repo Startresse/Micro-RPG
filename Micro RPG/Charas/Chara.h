@@ -29,8 +29,10 @@ public:
 
     bool is_dead() const { return HP <= 0; }
 
+    // indirection that allows to recover the status for non stackable statuses
     template <typename t>
     const Status* has_status() const;
+
     bool is_stunned() const;
     bool is_on_CD() const;
 

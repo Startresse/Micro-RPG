@@ -1,7 +1,7 @@
 #include "StatusType.h"
 
 #include "Cooldown.h"
-#include "DamageModifier.h"
+#include "DamageMultiplier.h"
 #include "Shield.h"
 #include "Stun.h"
 
@@ -15,7 +15,7 @@ const std::map<std::type_index, int> type_index::ranks = []()
         std::type_index(typeid(Shield)),
         std::type_index(typeid(Cooldown)),
         std::type_index(typeid(Stun)),
-        std::type_index(typeid(DamageModifier)),
+        std::type_index(typeid(DamageMultiplier)),
     };
 
     for (size_t i = 0; i < std::size(index_order); ++i)

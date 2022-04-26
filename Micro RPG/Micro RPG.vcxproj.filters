@@ -45,7 +45,7 @@
     <ClCompile Include="Statuses\Status.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Statuses\DamageModifier.cpp">
+    <ClCompile Include="Statuses\DamageMultiplier.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Statuses\Shield.cpp">
@@ -95,7 +95,7 @@
     <ClInclude Include="Statuses\Stun.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Statuses\DamageModifier.h">
+    <ClInclude Include="Statuses\DamageMultiplier.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Statuses\Shield.h">

@@ -1,18 +1,18 @@
-#include "DamageModifier.h"
+#include "DamageMultiplier.h"
 
 #include <sstream>
 #include <iomanip>
 
 #include "Misc/Utility.h"
 
-const float DamageModifier::default_damage_multiplier = 2.f;
+const float DamageMultiplier::default_damage_multiplier = 2.f;
 
-void DamageModifier::apply(int& dmg) const
+void DamageMultiplier::apply(int& dmg) const
 {
     dmg = static_cast<int>(std::round(dmg * damage_multiplier)) + extra_flat_damage;
 }
 
-std::string DamageModifier::status_value() const
+std::string DamageMultiplier::status_value() const
 {
     std::stringstream output;
 

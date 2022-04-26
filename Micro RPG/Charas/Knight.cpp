@@ -1,6 +1,6 @@
 #include "Knight.h"
 
-#include "Statuses/DamageModifier.h"
+#include "Statuses/DamageMultiplier.h"
 #include "Statuses/Shield.h"
 
 const float Knight::default_skill_success_rate = 0.60f;
@@ -13,5 +13,5 @@ Knight::Knight() :
 
 void Knight::skill()
 {
-    add_status(new DamageModifier(2));
+    add_status(new DamageMultiplier(2));
 }
