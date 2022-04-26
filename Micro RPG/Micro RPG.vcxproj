@@ -145,6 +145,7 @@
   <ItemGroup>
     <ClCompile Include="Logic\App.cpp" />
     <ClCompile Include="Charas\Chara.cpp" />
+    <ClCompile Include="Statuses\DamageFlat.cpp" />
     <ClCompile Include="Statuses\DamageMultiplier.cpp" />
     <ClCompile Include="Logic\Game.cpp" />
     <ClCompile Include="Charas\Knight.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="Charas\CountableChara.h" />
     <ClInclude Include="Misc\Countable.h" />
     <ClInclude Include="Statuses\Cooldown.h" />
+    <ClInclude Include="Statuses\DamageFlat.h" />
     <ClInclude Include="Statuses\DamageMultiplier.h" />
     <ClInclude Include="Logic\Game.h" />
     <ClInclude Include="Logic\GameSettings.h" />

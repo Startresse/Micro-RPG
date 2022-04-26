@@ -4,6 +4,7 @@
 #include "DamageMultiplier.h"
 #include "Shield.h"
 #include "Stun.h"
+#include "DamageFlat.h"
 
 using namespace statustype;
 
@@ -16,6 +17,7 @@ const std::map<std::type_index, int> type_index::ranks = []()
         std::type_index(typeid(Cooldown)),
         std::type_index(typeid(Stun)),
         std::type_index(typeid(DamageMultiplier)),
+        std::type_index(typeid(DamageFlat)),
     };
 
     for (size_t i = 0; i < std::size(index_order); ++i)

@@ -8,6 +8,7 @@
 #include "Statuses/Cooldown.h"
 #include "Statuses/Stun.h"
 #include "Statuses/DamageMultiplier.h"
+#include "Statuses/DamageFlat.h"
 #include "Statuses/Shield.h"
 
 Chara::~Chara()
@@ -75,6 +76,13 @@ int Chara::attack_damage() const
         const DamageMultiplier* dm = static_cast<const DamageMultiplier*>(s);
         if (dm->is_active())
             dm->apply(dmg);
+    }
+
+    for (const Status* s : get_set<DamageFlat>())
+    {
+        const DamageFlat* flat = static_cast<const DamageFlat*>(s);
+        if (flat->is_active())
+            flat->apply(dmg);
     }
 
     return dmg;

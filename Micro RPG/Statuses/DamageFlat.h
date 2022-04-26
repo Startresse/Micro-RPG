@@ -2,25 +2,25 @@
 
 #include "Status.h"
 
-class DamageMultiplier : public Status
+class DamageFlat : public Status
 {
 public:
-    DamageMultiplier 
+    DamageFlat 
     (
-        float damage_multiplier_,
+        int extra_flat_dmg_,
         int duration_ = default_duration
     ) :
-        damage_multiplier(damage_multiplier_),
+        extra_flat_dmg(extra_flat_dmg_),
         Status(duration_, true)
     {}
 
     void apply(int& dmg) const;
 
-    std::string status_name() const { return "dmg mult"; }
+    std::string status_name() const { return "flat dmg"; }
     std::string status_value() const;
 
 protected:
-    float damage_multiplier;
+    int extra_flat_dmg;
 
 private:
     static const int default_duration = 1;
