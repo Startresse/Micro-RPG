@@ -65,7 +65,7 @@ void Chara::special_move()
         return;
     }
 
-    add_status(new Cooldown(cooldown, false));
+    add_status(new Cooldown(cooldown));
 
     bool success = roll_skill();
 

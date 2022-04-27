@@ -7,7 +7,7 @@ class Shield : public Status
 public:
     Shield(int shield_value_, int duration_ = default_duration) :
         shield_value(shield_value_),
-        Status(duration_, true)
+        Status(duration_)
     {}
 
     void take_hit(int& dmg);

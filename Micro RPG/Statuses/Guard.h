@@ -9,7 +9,7 @@ class Guard : public Status
 public:
     Guard(Chara* guardian_, int duration_ = default_duration) :
         guardian(guardian_),
-        Status(duration_, true)
+        Status(duration_)
     {}
 
     Chara* get_guardian() const { return guardian; }

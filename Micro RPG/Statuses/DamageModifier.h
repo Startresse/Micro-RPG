@@ -7,7 +7,7 @@ class DamageModifier : public Status
 {
 public:
     DamageModifier(t modifier_, int duration_ = default_duration) :
-        modifier(modifier_), Status(duration_, true) {}
+        modifier(modifier_), Status(duration_) {}
 
     virtual void apply(int& dmg) const = 0;
     t value() const { return modifier; }
